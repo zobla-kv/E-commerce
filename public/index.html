@@ -10,12 +10,12 @@
   </head>
   <body>
     <section id="navbar">
-      <div id="navbarItemsContainer">
+      <div id="navbarItemsContainer" class="items">
         <div class="pages"><p>Home</p></div>
         <div class="pages"><p>Shop</p></div>
         <div class="pages"><p>About</p></div>
       </div>
-      <div id="navbarItemsContainer">
+      <div id="navbarItemsContainer" class="items">
         <div class="search">
           <!-- prettier-ignore -->
           <input type="text" class="searchTerm" placeholder="What are you looking for?" />
@@ -24,7 +24,7 @@
           </button>
         </div>
       </div>
-      <div id="navbarItemsContainer" class="profile">
+      <div id="navbarItemsContainer" class="profile items">
         <button id="loginButton">Login</button>
         <button id="regButton">Sign up</button>
       </div>
@@ -49,7 +49,7 @@
         <i id="rightArrow" class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
       </div>
     </section>
-    <section>
+    <section id="sliderSection">
       <div id="sliderOne" class="slider">
         <div id="sliderOneText" class="sliderInside">
           Free shipping across the country. Deadline for delivering our product
@@ -78,5 +78,43 @@
         </div>
       </div>
     </section>
+    <form id="loginForm">
+      <p id="loginText">Login</p>
+      <br />
+      <label id="usernameLabel">Username</label>
+      <input type="text" id="loginUsername" /><br />
+      <label id="passwordLabel">Password</label>
+      <input type="password" id="loginPassword" /><br />
+      <a id="passwordReset" href="/">Forgot password?</a><br />
+      <button id="loginSubmit" type="submit">Submit</button>
+      <div id="loginSocial">
+        <p>Log in with</p>
+        <a href="#" class="loginSocialItem fb-bg">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="#" class="loginSocialItem google-bg">
+          <i class="fa fa-google"></i>
+        </a>
+      </div>
+    </form>
+    <form id="regForm">
+      <p id="loginText">Sign up</p>
+      <br />
+      <label id="emailLabel">E-mail</label>
+      <p id="emailErr" class="signUpValidationError"></p>
+      <input type="text" id="emailInput" /><br />
+      <label id="usernameLabel">Username</label>
+      <p id="usernameErr" class="signUpValidationError"></p>
+      <input type="text" id="regUsername" /><br />
+      <label id="passwordLabel">Password</label>
+      <p id="passwordErr" class="signUpValidationError"></p>
+      <input type="password" id="regPassword" /><br />
+      <label id="passwordLabel">Repeat password</label>
+      <p id="repeatPasswordError" class="signUpValidationError"></p>
+      <input type="password" id="regPasswordRepeat" /><br />
+      <button id="regSubmit" type="submit">Submit</button>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"></script>
   </body>
 </html>
