@@ -14,9 +14,9 @@ body {
 
 #filtersContainer {
   position: sticky;
-  top: 50px;
-  width: 20%;
-  height: 60%;
+  top: 100px;
+  width: 21%;
+  height: 55%;
   border-radius: 18px;
   background-image: linear-gradient(
     90deg,
@@ -25,6 +25,55 @@ body {
     rgba(0, 0, 0, 0) 95%
   );
   border-right: 2px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#filters {
+  width: 100%;
+  height: 95%;
+  text-align: center;
+  padding: 5px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#brandFiltersContainer {
+  height: 60%;
+}
+
+#genderFiltersContainer {
+  height: 40%;
+}
+
+#brandFilters,
+#genderFilters {
+  border-top: 1px solid white;
+  width: 90%;
+  margin: auto;
+  padding: 5px;
+}
+
+#brandFilters {
+  height: 80%;
+}
+
+#genderFilters {
+  height: 70%;
+}
+
+.brandItem {
+  display: block;
+  padding-left: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: start;
+  margin-left: -30px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 100;
 }
 
 #shopItemsContainer {
@@ -42,10 +91,61 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  overflow: auto;
+}
+
+#shopItemsContainer > * {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 #item {
-  border: 1px solid white;
+  border: 2px solid white;
+  border-radius: 5px;
   width: 30%;
   height: 40%;
+  cursor: pointer;
+}
+
+#itemImgContainer {
+  height: 80%;
+}
+
+#itemImg {
+  width: 100%;
+  height: 100%;
+}
+
+#itemName,
+#itemPrice {
+  height: 10%;
+  text-align: center;
+  line-height: 4vh;
+  background-color: #121212;
+}
+
+@media only screen and (max-width: 900px) {
+  #filtersContainer,
+  #shopItemsContainer {
+    border-radius: 0;
+    border: none;
+  }
+
+  #filtersContainer {
+    width: 32%;
+  }
+
+  #shopItemsContainer {
+    width: 68%;
+  }
+
+  #item {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #item {
+    width: 80%;
+  }
 }
