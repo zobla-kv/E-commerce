@@ -6,7 +6,7 @@
 body {
   color: white;
   /* prettier-ignore */
-  background-image: url("./assets/img/5.jpg");
+  background-image: url("../assets/img/5.jpg");
   background-size: cover;
   background-attachment: fixed;
   font-family: "Open Sans", sans-serif;
@@ -19,7 +19,7 @@ body {
 }
 
 #navbar {
-  background-image: url("./assets/img/5.jpg");
+  background-image: url("../assets/img/5.jpg");
   background-size: cover;
   background-attachment: fixed;
   z-index: 2;

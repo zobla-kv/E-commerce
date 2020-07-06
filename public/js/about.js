@@ -26,6 +26,7 @@ setTimeout(() => {
     .fromTo(map, 1, { opacity: "0" }, { opacity: "1" }, "-=0.6");
 }, 500);
 
+page.addSearchFunctionality();
 page.addPageSwitchFunctionality();
 page.addLoginButtonFunctionality();
 page.addLoginSubmitFunctionality();

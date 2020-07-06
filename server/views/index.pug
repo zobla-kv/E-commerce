@@ -1,0 +1,104 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Shop
+  link(rel='stylesheet' href='../styles/index.css')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN' crossorigin='anonymous')
+  script(defer='' src='../js/index.js' type='module')
+body
+section#navbar
+  #navbarItemsContainer.items.pagesContainer
+    .pages
+      p Home
+    .pages
+      p Shop
+    .pages
+      p About
+  #navbarItemsContainer.items.searchContainer
+    form#search
+      // prettier-ignore
+      input#searchInput.searchTerm(type='text' placeholder='What are you looking for?')
+      button.searchButton(type='submit')
+        i.fa.fa-search
+  #navbarItemsContainer.items.profile
+    if !loggedIn 
+      button#loginButton Login
+      button#regButton Sign up
+    else 
+      p Welcome #{name} !
+section#welcomeContainer
+  #welcomeCentral Welcome to Sneakers Zone !
+  #welcomeLeft
+    | Sneakers shop that you will love! One place where everyone can satisfy
+    | their needs. You want best, we give it to you. Get your sneakers at
+    | never seen before prices !
+    br
+    button#welcomeButton(data-hover='→')
+      p Check it out !
+  #welcomeRight
+    // prettier-ignore
+    i#leftArrow.fa.fa-chevron-left.fa-2x(aria-hidden='true')
+    #slideShow
+    #slideShowPrice
+    // prettier-ignore
+    i#rightArrow.fa.fa-chevron-right.fa-2x(aria-hidden='true')
+section#sliderSection
+  #sliderOne.slider
+    #sliderOneText.sliderInside
+      | Free shipping across the country. Deadline for delivering our product
+      | is 30 days !
+    #sliderOneImage.sliderInside
+      img(src='./assets/img/delivery6.png' alt='free delivery')
+  #sliderTwo.slider
+    #sliderTwoImage.sliderInside
+      img(src='./assets/img/moneyBack.png' alt='money back')
+    #sliderTwoText.sliderInside
+      | Not satisfied with the product? Worry not as our policy allows full
+      | refund within 30 days !
+  #sliderThree.slider
+    #sliderThreeText.sliderInside
+      | Get only high quality products. Millions of happy customers all over
+      | the world !
+    #sliderThreeImage.sliderInside
+      img(src='./assets/img/bestQuality.png' alt='secure payment')
+form#loginForm
+  p#loginText Login
+  br
+  label#usernameLabel Username
+  input#loginUsername(type='text')
+  br
+  label#passwordLabel Password
+  input#loginPassword(type='password')
+  br
+  a#passwordReset(href='/') Forgot password?
+  br
+  button#loginSubmit(type='submit') Submit
+  #loginSocial
+    p Log in with
+    a.loginSocialItem.fb-bg(href='#')
+      i.fa.fa-facebook
+    a.loginSocialItem.google-bg(href='#')
+      i.fa.fa-google
+form#regForm
+  p#loginText Sign up
+  br
+  label#emailLabel E-mail
+  p#emailErr.signUpValidationError
+  input#emailInput(type='text')
+  br
+  label#usernameLabel Username
+  p#usernameErr.signUpValidationError
+  input#regUsername(type='text')
+  br
+  label#passwordLabel Password
+  p#passwordErr.signUpValidationError
+  input#regPassword(type='password')
+  br
+  label#passwordLabel Repeat password
+  p#repeatPasswordError.signUpValidationError
+  input#regPasswordRepeat(type='password')
+  br
+  button#regSubmit(type='submit') Submit
+script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js')

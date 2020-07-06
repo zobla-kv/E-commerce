@@ -15,6 +15,7 @@ const sliders = [slider1, slider2, slider3];
 
 import * as page from "./exports.js";
 
+page.addSearchFunctionality();
 page.addPageSwitchFunctionality();
 page.addLoginButtonFunctionality();
 page.addLoginSubmitFunctionality();
@@ -23,10 +24,10 @@ page.addRegSubmitFunctionality();
 page.removeCover();
 
 const slideShowImages = [
-  "./assets/img/slideshow1.png",
-  "./assets/img/slideshow2.png",
-  "./assets/img/slideshow3.png",
-  "./assets/img/slideshow4.png",
+  "../assets/img/slideshow1.png",
+  "../assets/img/slideshow2.png",
+  "../assets/img/slideshow3.png",
+  "../assets/img/slideshow4.png",
 ];
 
 const slideShowPrices = ["$69", "$80", "$49", "$129"];
@@ -35,7 +36,7 @@ let slideIndex = 0;
 let opacity = 1;
 
 checkItOut.addEventListener("click", () => {
-  window.location.href = "http://127.0.0.1:5500/public/shop/";
+  window.location.href = "http://127.0.0.1:4000/shop/";
 });
 
 if (slideShow)

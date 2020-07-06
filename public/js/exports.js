@@ -19,21 +19,45 @@ export const tl = new TimelineMax();
 export function addPageSwitchFunctionality() {
   for (let i = 0; i < pages.length; i++)
     pages[i].addEventListener("click", () => {
+      sessionStorage.setItem("pageChanger", "navbar");
       if (event.target.innerText === "Home")
-        document.location.href = "http://127.0.0.1:5500/public/";
+        document.location.href = "http://localhost:4000";
       else
         document.location.href =
-          "http://127.0.0.1:5500/public/" +
-          event.target.innerText.toLowerCase();
+          "http://localhost:4000/" + event.target.innerText.toLowerCase();
     });
 }
 
-export function addSearchFunctionality() {}
+export function addSearchFunctionality() {
+  searchForm.addEventListener("submit", () => {
+    event.preventDefault();
+    if (window.location.href !== "http://localhost:4000/shop/") {
+      sessionStorage.setItem("searchTerm", searchTerm.value);
+      sessionStorage.setItem("pageChanger", "form");
+      window.location.href = "http://localhost:4000/shop";
+    } else performSearch(searchTerm.value);
+  });
+}
+
+export function performSearch(term) {
+  const data = { searchTerm: term };
+  fetch("http://localhost:4000", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      type: "search",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+}
 
 export function addLoginSubmitFunctionality() {
-  loginSubmit.addEventListener("click", () => {
-    event.preventDefault();
-  });
+  if (loginButton)
+    loginSubmit.addEventListener("click", () => {
+      event.preventDefault();
+    });
 }
 
 export let activeForm = null;
@@ -70,21 +94,23 @@ export function clearSignUpErrorMessages() {
 }
 
 export function addLoginButtonFunctionality() {
-  loginButton.addEventListener("click", () => {
-    addBlur();
-    displayForm(loginForm);
-    loginSubmit.focus();
-    activeForm = loginForm;
-  });
+  if (loginButton)
+    loginButton.addEventListener("click", () => {
+      addBlur();
+      displayForm(loginForm);
+      loginSubmit.focus();
+      activeForm = loginForm;
+    });
 }
 
 export function addRegButtonFunctionality() {
-  regButton.addEventListener("click", () => {
-    addBlur();
-    displayForm(regForm);
-    regSubmit.focus();
-    activeForm = regForm;
-  });
+  if (regButton)
+    regButton.addEventListener("click", () => {
+      addBlur();
+      displayForm(regForm);
+      regSubmit.focus();
+      activeForm = regForm;
+    });
 }
 
 export function removeCover() {

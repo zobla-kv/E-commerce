@@ -1,5 +1,5 @@
 body {
-  height: 1000px;
+  height: 850px;
 }
 
 #contentContainer {
@@ -15,7 +15,7 @@ body {
   position: sticky;
   top: 100px;
   width: 21%;
-  height: 75%;
+  height: 80%;
   border-radius: 18px;
   background-image: linear-gradient(
     90deg,
@@ -61,12 +61,20 @@ body {
   padding: 5px;
 }
 
-#brandFilters {
-  height: 80%;
+#clearSearch {
+  display: block;
+  border-radius: 18px;
+  margin: auto;
+  margin-top: -1%;
+  margin-bottom: 5px;
+  height: 5vh;
+  font-weight: bold;
+  overflow: hidden;
+  background: rgba(255, 0, 0, 0.1);
 }
 
-#genderFilters {
-  height: 70%;
+#clearSearch:active {
+  border-color: red;
 }
 
 .brandItem {

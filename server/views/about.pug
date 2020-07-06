@@ -1,0 +1,98 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Shop
+  link(rel='stylesheet' href='../styles/index.css')
+  link(rel='stylesheet' href='../styles/about.css')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN' crossorigin='anonymous')
+  script(defer='' src='../js/about.js' type='module')
+section#navbar
+  #navbarItemsContainer.items.pagesContainer
+    .pages
+      p Home
+    .pages
+      p Shop
+    .pages
+      p About
+  #navbarItemsContainer.items.searchContainer
+    form#search
+      // prettier-ignore
+      input#searchInput.searchTerm(type='text' placeholder='What are you looking for?')
+      button.searchButton(type='submit')
+        i.fa.fa-search
+  #navbarItemsContainer.items.profile
+    if !loggedIn
+      button#loginButton Login
+      button#regButton Sign up
+    else 
+      p Welcome #{name} !
+section
+  #content
+    #particles
+    #description
+      .headers About company
+      |           We are sneakers selling company running successful business for more
+      |           than 10 years. Starting as a small start-up company, with our passion
+      |           and hard work, we have managed to brand our name and be recognized as
+      |           trastful company that serves millions of customers all over the world.
+      |           In the future our goal is to become standard global company matching
+      |           industry&apos;s giants.
+    #contact
+      .headers
+        | Contact
+      .itemKey E-mail:
+      .itemValue
+        a(href='')  sneakerszone@gmail.com
+      br
+      .itemKey Adress:
+      .itemValue
+        | E Cocoa St Compton
+      br
+      .itemKey Phone :
+      .itemValue
+        | (+1) 213-827-3138
+    #map
+      .headers Where to find us
+      iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.001720391144!2d-118.21821258530525!3d33.88960953373144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2cb5d68b2d0b9%3A0x2b3dc9788c9af17d!2zRSBDb2NvYSBTdCwgQ29tcHRvbiwgQ0EgOTAyMjEsINCh0ZjQtdC00LjRmtC10L3QtSDQlNGA0LbQsNCy0LU!5e0!3m2!1ssr!2srs!4v1593885337421!5m2!1ssr!2srs')
+form#loginForm
+  p#loginText Login
+  br
+  label#usernameLabel Username
+  input#loginUsername(type='text')
+  br
+  label#passwordLabel Password
+  input#loginPassword(type='password')
+  br
+  a#passwordReset(href='/') Forgot password?
+  br
+  button#loginSubmit(type='submit') Submit
+  #loginSocial
+    p Log in with
+    a.loginSocialItem.fb-bg(href='#')
+      i.fa.fa-facebook
+    a.loginSocialItem.google-bg(href='#')
+      i.fa.fa-google
+form#regForm
+  p#loginText Sign up
+  br
+  label#emailLabel E-mail
+  p#emailErr.signUpValidationError
+  input#emailInput(type='text')
+  br
+  label#usernameLabel Username
+  p#usernameErr.signUpValidationError
+  input#regUsername(type='text')
+  br
+  label#passwordLabel Password
+  p#passwordErr.signUpValidationError
+  input#regPassword(type='password')
+  br
+  label#passwordLabel Repeat password
+  p#repeatPasswordError.signUpValidationError
+  input#regPasswordRepeat(type='password')
+  br
+  button#regSubmit(type='submit') Submit
+script(src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js')
