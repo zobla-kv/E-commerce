@@ -10,21 +10,21 @@
   </head>
   <body>
     <section id="navbar">
-      <div id="navbarItemsContainer" class="items">
+      <div id="navbarItemsContainer" class="items pagesContainer">
         <div class="pages"><p>Home</p></div>
         <div class="pages"><p>Shop</p></div>
         <div class="pages"><p>About</p></div>
       </div>
-      <div id="navbarItemsContainer" class="items">
-        <div class="search">
+      <div id="navbarItemsContainer" class="items searchContainer">
+        <form id="search">
           <!-- prettier-ignore -->
-          <input type="text" class="searchTerm" placeholder="What are you looking for?" />
+          <input id='searchInput' type="text" class="searchTerm" placeholder="What are you looking for?"/>
           <button type="submit" class="searchButton">
             <i class="fa fa-search"></i>
           </button>
-        </div>
+        </form>
       </div>
-      <div id="navbarItemsContainer" class="profile items">
+      <div id="navbarItemsContainer" class="items profile">
         <button id="loginButton">Login</button>
         <button id="regButton">Sign up</button>
       </div>

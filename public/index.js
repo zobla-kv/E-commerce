@@ -3,6 +3,7 @@ const welcomeContainer = document.getElementById("welcomeContainer");
 const welcomeCentral = document.getElementById("welcomeCentral");
 const welcomeLeft = document.getElementById("welcomeLeft");
 const welcomeRight = document.getElementById("welcomeRight");
+const checkItOut = document.getElementById("welcomeButton");
 const leftArrow = document.getElementById("leftArrow");
 const rightArrow = document.getElementById("rightArrow");
 const slideShow = document.getElementById("slideShow");
@@ -10,6 +11,7 @@ const slideShowPrice = document.getElementById("slideShowPrice");
 const slider1 = document.getElementById("sliderOne");
 const slider2 = document.getElementById("sliderTwo");
 const slider3 = document.getElementById("sliderThree");
+const sliders = [slider1, slider2, slider3];
 
 import * as page from "./exports.js";
 
@@ -32,6 +34,10 @@ const slideShowPrices = ["$69", "$80", "$49", "$129"];
 let slideIndex = 0;
 let opacity = 1;
 
+checkItOut.addEventListener("click", () => {
+  window.location.href = "http://127.0.0.1:5500/public/shop/";
+});
+
 if (slideShow)
   slideShow.style.backgroundImage = `url(${slideShowImages[slideIndex]})`;
 if (slideShowPrice) slideShowPrice.innerHTML = slideShowPrices[slideIndex];
@@ -46,17 +52,6 @@ rightArrow.addEventListener("click", () => {
   slideIndex++;
   if (slideIndex > slideShowImages.length - 1) slideIndex = 0;
   changeSlideShowImage();
-});
-
-window.addEventListener("scroll", () => {
-  const addPx = 40;
-  // window.scrollY + window.innerHeight; // bottom of the page
-  if (window.scrollY > slider1.offsetTop + addPx)
-    slider1.style.marginLeft = "0";
-  if (window.scrollY > slider2.offsetTop + addPx)
-    slider2.style.marginLeft = "50%";
-  if (window.scrollY > slider3.offsetTop + addPx)
-    slider3.style.marginLeft = "0";
 });
 
 function changeSlideShowImage() {
@@ -75,6 +70,28 @@ function changeSlideShowImage() {
     }
   }, 5);
 }
+
+(function setSliderPosition() {
+  if (window.innerWidth > 730) {
+    slider1.style.marginLeft = "-50%";
+    slider2.style.marginLeft = "100%";
+    slider3.style.marginLeft = "-50%";
+  } else {
+    for (let i = 0; i < sliders.length; i++) sliders[i].style.marginLeft = "0%";
+  }
+})();
+
+window.addEventListener("scroll", () => {
+  if (window.innerWidth > 730) {
+    let addPx = 50;
+    if (window.scrollY > slider1.offsetTop + addPx)
+      slider1.style.marginLeft = "0";
+    if (window.scrollY > slider2.offsetTop + addPx)
+      slider2.style.marginLeft = "50%";
+    if (window.scrollY > slider3.offsetTop + addPx)
+      slider3.style.marginLeft = "0";
+  }
+});
 
 /// timelinemax ///
 

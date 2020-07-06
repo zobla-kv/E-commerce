@@ -4,7 +4,6 @@ body {
 
 #contentContainer {
   position: relative;
-  /* border: 1px solid yellow; */
   height: 100vh;
   width: 100%;
   top: 200px;
@@ -16,7 +15,7 @@ body {
   position: sticky;
   top: 100px;
   width: 21%;
-  height: 55%;
+  height: 75%;
   border-radius: 18px;
   background-image: linear-gradient(
     90deg,
@@ -41,11 +40,17 @@ body {
 }
 
 #brandFiltersContainer {
-  height: 60%;
+  height: 50%;
 }
 
-#genderFiltersContainer {
-  height: 40%;
+#genderFiltersContainer,
+#sortFiltersContainer {
+  margin-top: -25px;
+  height: 25%;
+}
+
+#sortFiltersContainer {
+  margin-top: 10px;
 }
 
 #brandFilters,
@@ -66,14 +71,56 @@ body {
 
 .brandItem {
   display: block;
-  padding-left: 30px;
+  position: relative;
+  cursor: pointer;
+  padding-left: 25px;
   margin-top: 10px;
   cursor: pointer;
   font-size: 20px;
   text-align: start;
-  margin-left: -30px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 100;
+  width: 0;
+}
+
+.brandItem input {
+  display: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+.brandItem input:checked ~ .checkmark {
+  background-color: rgb(12, 12, 12);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.brandItem input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.brandItem .checkmark:after {
+  left: 7px;
+  top: -2px;
+  width: 5px;
+  height: 10px;
+  border: solid red;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 #shopItemsContainer {

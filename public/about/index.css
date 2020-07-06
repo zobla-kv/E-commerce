@@ -1,0 +1,133 @@
+body {
+  height: 700px;
+}
+
+#content {
+  position: absolute;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  border-radius: 18px;
+  width: 90%;
+  min-height: 80vh;
+  top: 120px;
+  left: 5%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: space-around;
+  background-image: linear-gradient(
+    90deg,
+    rgba(105, 15, 15, 1) -155%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(105, 15, 15, 1) 200%
+  );
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#description,
+#contact,
+#map {
+  display: none;
+}
+
+#map {
+  width: 40%;
+  min-height: 40vh;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.headers {
+  font-style: normal;
+  font-size: 22px;
+  font-family: monospace;
+  text-align: center;
+  margin-bottom: 5px;
+  border: 1px solid white;
+  width: 100%;
+}
+
+iframe {
+  width: 100%;
+  height: 90%;
+  border: none;
+}
+
+a:visited {
+  color: white;
+}
+
+#contact {
+  width: 40%;
+  min-height: 30vh;
+  padding: 10px;
+  padding-left: 7%;
+  font-family: monospace;
+  text-align: center;
+}
+
+.itemKey,
+.itemValue {
+  display: inline-block;
+  font-size: 18px;
+  font-family: monospace;
+}
+
+.itemValue {
+  width: 200px;
+  /* margin-bottom: 10px; */
+}
+
+#description {
+  width: 50%;
+  min-height: 30vh;
+  text-align: center;
+  padding: 10px;
+  font-style: italic;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 970px) {
+  #contact {
+    text-align: center;
+  }
+  .itemKey {
+    margin-top: 10px;
+  }
+
+  #content {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  #map,
+  #description,
+  #contact {
+    width: 95%;
+  }
+
+  #description,
+  #contact {
+    margin-bottom: 20px;
+  }
+
+  #contact {
+    padding-left: 2%;
+    min-height: 25vh;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  #content {
+    margin-top: 80px;
+  }
+}

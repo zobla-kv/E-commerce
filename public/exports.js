@@ -1,3 +1,5 @@
+const searchForm = document.getElementById("search");
+const searchTerm = document.getElementById("searchInput");
 const loginButton = document.getElementById("loginButton");
 const loginForm = document.getElementById("loginForm");
 const loginSubmit = document.getElementById("loginSubmit");
@@ -25,6 +27,8 @@ export function addPageSwitchFunctionality() {
           event.target.innerText.toLowerCase();
     });
 }
+
+export function addSearchFunctionality() {}
 
 export function addLoginSubmitFunctionality() {
   loginSubmit.addEventListener("click", () => {
