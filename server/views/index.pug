@@ -8,25 +8,31 @@ head
   script(defer='' src='../js/index.js' type='module')
 body
 section#navbar
-  #navbarItemsContainer.items.pagesContainer
+  #navbarItemsContainer.pagesContainer
     .pages
       p Home
     .pages
       p Shop
     .pages
       p About
-  #navbarItemsContainer.items.searchContainer
+  #navbarItemsContainer.searchContainer
     form#search
       // prettier-ignore
       input#searchInput.searchTerm(type='text' placeholder='What are you looking for?')
       button.searchButton(type='submit')
         i.fa.fa-search
-  #navbarItemsContainer.items.profile
+  #navbarItemsContainer.profile
     if !loggedIn 
-      button#loginButton Login
-      button#regButton Sign up
+        button#loginButton Login
+        button#regButton Sign up
     else 
-      p Welcome #{name} !
+        div#cart
+          img(src="/assets/img/cart.png")
+        div#loggedInProfile
+          p #{name}
+        div#profileDropdown
+            div.item#profile profile
+            div.item#logout log out
 section#welcomeContainer
   #welcomeCentral Welcome to Sneakers Zone !
   #welcomeLeft

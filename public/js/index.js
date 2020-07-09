@@ -1,3 +1,4 @@
+const navbar = document.getElementById("navbar");
 const navbarItems = document.getElementsByClassName("items");
 const welcomeContainer = document.getElementById("welcomeContainer");
 const welcomeCentral = document.getElementById("welcomeCentral");
@@ -21,6 +22,7 @@ page.addLoginButtonFunctionality();
 page.addLoginSubmitFunctionality();
 page.addRegButtonFunctionality();
 page.addRegSubmitFunctionality();
+page.addLogOutButtonFunctionality();
 page.removeCover();
 
 const slideShowImages = [
@@ -36,7 +38,7 @@ let slideIndex = 0;
 let opacity = 1;
 
 checkItOut.addEventListener("click", () => {
-  window.location.href = "http://127.0.0.1:4000/shop/";
+  window.location.href = "http://localhost:4000/shop/";
 });
 
 if (slideShow)
@@ -94,21 +96,28 @@ window.addEventListener("scroll", () => {
   }
 });
 
-/// timelinemax ///
+/// timelinemax //
 
-// tl.fromTo(navbarItems, 1, { marginLeft: "-10%" }, { marginLeft: "0%" })
-//   //prettier-ignore
-//   .fromTo(navbarItems, 1, { opacity: "0" }, { opacity: "1" }, "-=0.5")
-//   // prettier-ignore
-//   .fromTo(
-//     welcomeContainer,
-//     1,
-//     { height: "0" },
-//     { height: "60vh", ease: Power2.easeInOut },
-//     "-=0.2"
-//   )
-//   //prettier-ignore
-//   .fromTo(welcomeCentral, 1, { opacity: "0" }, { opacity: "1" })
-//   .fromTo(welcomeLeft, 1, { opacity: "0" }, { opacity: "1" }, "+=0.3")
-//   .fromTo(welcomeRight, 1, { opacity: "0" }, { opacity: "1" }, "-=0.3")
-//   .fromTo(slideShowPrice, 1, { scale: "0" }, { scale: "1" });
+const tl = page.tl;
+
+setTimeout(() => {
+  navbar.style.display = "flex";
+  welcomeContainer.style.display = "flex";
+
+  // tl.fromTo(navbarItems, 1, { marginLeft: "-10%" }, { marginLeft: "0%" })
+  //   //prettier-ignore
+  //   .fromTo(navbarItems, 1, { opacity: "0" }, { opacity: "1" }, "-=0.5")
+  //   // prettier-ignore
+  //   .fromTo(
+  //     welcomeContainer,
+  //     1,
+  //     { width: "0" },
+  //     { width: "64%", ease: Power2.easeInOut },
+  //     "-=0.2"
+  //   )
+  //   //prettier-ignore
+  //   .fromTo(welcomeCentral, 1, { opacity: "0" }, { opacity: "1" })
+  //   .fromTo(welcomeLeft, 1, { opacity: "0" }, { opacity: "1" }, "+=0.3")
+  //   .fromTo(welcomeRight, 1, { opacity: "0" }, { opacity: "1" }, "-=0.3")
+  //   .fromTo(slideShowPrice, 1, { scale: "0" }, { scale: "1" });
+}, 500);

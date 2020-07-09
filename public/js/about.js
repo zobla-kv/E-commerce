@@ -4,6 +4,10 @@ const tl = page.tl;
 const content = document.getElementById("content");
 const description = document.getElementById("description");
 const contact = document.getElementById("contact");
+const navbar = document.getElementById("navbar");
+
+navbar.style.display = "flex";
+content.style.display = "flex";
 
 content.style.opacity = 0;
 contact.style.opacity = 0;
@@ -32,6 +36,7 @@ page.addLoginButtonFunctionality();
 page.addLoginSubmitFunctionality();
 page.addRegButtonFunctionality();
 page.addRegSubmitFunctionality();
+page.addLogOutButtonFunctionality();
 page.removeCover();
 
 particlesJS("particles", {

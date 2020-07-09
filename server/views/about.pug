@@ -8,25 +8,31 @@ head
   link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN' crossorigin='anonymous')
   script(defer='' src='../js/about.js' type='module')
 section#navbar
-  #navbarItemsContainer.items.pagesContainer
+  #navbarItemsContainer.pagesContainer
     .pages
       p Home
     .pages
       p Shop
     .pages
       p About
-  #navbarItemsContainer.items.searchContainer
+  #navbarItemsContainer.searchContainer
     form#search
       // prettier-ignore
       input#searchInput.searchTerm(type='text' placeholder='What are you looking for?')
       button.searchButton(type='submit')
         i.fa.fa-search
-  #navbarItemsContainer.items.profile
-    if !loggedIn
-      button#loginButton Login
-      button#regButton Sign up
+  #navbarItemsContainer.profile
+    if !loggedIn 
+        button#loginButton Login
+        button#regButton Sign up
     else 
-      p Welcome #{name} !
+        div#cart
+          img(src="/assets/img/cart.png")
+        div#loggedInProfile
+          p #{name}
+        div#profileDropdown
+            div.item#profile profile
+            div.item#logout log out
 section
   #content
     #particles

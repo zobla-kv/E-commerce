@@ -1,5 +1,7 @@
 const searchForm = document.getElementById("search");
 const searchTerm = document.getElementById("searchInput");
+const loginUsername = document.getElementById("loginUsername");
+const loginPassword = document.getElementById("loginPassword");
 const loginButton = document.getElementById("loginButton");
 const loginForm = document.getElementById("loginForm");
 const loginSubmit = document.getElementById("loginSubmit");
@@ -11,6 +13,7 @@ const regUsername = document.getElementById("regUsername");
 const regPassword = document.getElementById("regPassword");
 const regPasswordRepeat = document.getElementById("regPasswordRepeat");
 const signValErr = document.getElementsByClassName("signUpValidationError");
+const logOut = document.getElementById("logout");
 const pages = document.getElementsByClassName("pages");
 const sections = document.getElementsByTagName("section");
 
@@ -35,28 +38,41 @@ export function addSearchFunctionality() {
       sessionStorage.setItem("searchTerm", searchTerm.value);
       sessionStorage.setItem("pageChanger", "form");
       window.location.href = "http://localhost:4000/shop";
-    } else performSearch(searchTerm.value);
+    } else performHttpRequest("search", searchTerm.value);
   });
 }
 
-export function performSearch(term) {
-  const data = { searchTerm: term };
+export function performHttpRequest(type, data) {
+  const body = { type, data };
   fetch("http://localhost:4000", {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      type: "search",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(body),
   })
     .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((data) => {
+      console.log(data.message);
+      if (data.message === "success") document.location.reload();
+    });
+}
+
+export function handleResponse(message) {
+  message === "User created"
+    ? (document.location.href = "http://localhost:4000/verify")
+    : (signValErr["repeatPasswordError"].innerHTML = message);
 }
 
 export function addLoginSubmitFunctionality() {
   if (loginButton)
     loginSubmit.addEventListener("click", () => {
       event.preventDefault();
+      const data = {
+        username: loginUsername.value,
+        password: loginPassword.value,
+      };
+      performHttpRequest("login", data);
     });
 }
 
@@ -84,7 +100,13 @@ export function addRegSubmitFunctionality() {
         signValErr["repeatPasswordError"].innerHTML = "passwords don't match";
         break;
       default:
-        document.location.href = "http://127.0.0.1:5500/public/";
+        const data = {
+          email: regEmail.value,
+          username: regUsername.value,
+          password: regPassword.value,
+        };
+        performHttpRequest("register", data);
+      // document.location.href = "http://localhost:4000";
     }
   });
 }
@@ -174,4 +196,11 @@ export function clearInputs() {
   regPassword.value = "";
   regPasswordRepeat.value = "";
   clearSignUpErrorMessages();
+}
+
+export function addLogOutButtonFunctionality() {
+  if (logOut)
+    logOut.addEventListener("click", () => {
+      performHttpRequest("logout", null);
+    });
 }
