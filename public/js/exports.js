@@ -52,20 +52,23 @@ export function performHttpRequest(type, data) {
     body: JSON.stringify(body),
   })
     .then((res) => res.json())
-    .then((data) => {
-      console.log(data.message);
-      if (data.message === "success") document.location.reload();
-    });
+    .then((data) => handleResponse(data.message));
 }
 
 export function handleResponse(message) {
+  console.log(message);
+  if (message === "success") {
+    if (document.location.href.includes("profile"))
+      return (document.location.href = "http://localhost:4000");
+    else return document.location.reload();
+  }
   message === "User created"
     ? (document.location.href = "http://localhost:4000/verify")
     : (signValErr["repeatPasswordError"].innerHTML = message);
 }
 
 export function addLoginSubmitFunctionality() {
-  if (loginButton)
+  if (loginSubmit)
     loginSubmit.addEventListener("click", () => {
       event.preventDefault();
       const data = {
@@ -79,36 +82,36 @@ export function addLoginSubmitFunctionality() {
 export let activeForm = null;
 
 export function addRegSubmitFunctionality() {
-  regSubmit.addEventListener("click", () => {
-    event.preventDefault();
-    // prettier-ignore
-    const validation = validateSignupForm(regEmail.value,regUsername.value,regPassword.value,regPasswordRepeat.value);
-    switch (validation) {
-      case "email":
-        signValErr["emailErr"].innerHTML = "email is not valid";
-        break;
-      case "username":
-        clearSignUpErrorMessages();
-        signValErr["usernameErr"].innerHTML = "username too short";
-        break;
-      case "password":
-        clearSignUpErrorMessages();
-        signValErr["passwordErr"].innerHTML = "password too short";
-        break;
-      case "passwordRepeat":
-        clearSignUpErrorMessages();
-        signValErr["repeatPasswordError"].innerHTML = "passwords don't match";
-        break;
-      default:
-        const data = {
-          email: regEmail.value,
-          username: regUsername.value,
-          password: regPassword.value,
-        };
-        performHttpRequest("register", data);
-      // document.location.href = "http://localhost:4000";
-    }
-  });
+  if (regSubmit)
+    regSubmit.addEventListener("click", () => {
+      event.preventDefault();
+      // prettier-ignore
+      const validation = validateSignupForm(regEmail.value,regUsername.value,regPassword.value,regPasswordRepeat.value);
+      switch (validation) {
+        case "email":
+          signValErr["emailErr"].innerHTML = "email is not valid";
+          break;
+        case "username":
+          clearSignUpErrorMessages();
+          signValErr["usernameErr"].innerHTML = "username too short";
+          break;
+        case "password":
+          clearSignUpErrorMessages();
+          signValErr["passwordErr"].innerHTML = "password too short";
+          break;
+        case "passwordRepeat":
+          clearSignUpErrorMessages();
+          signValErr["repeatPasswordError"].innerHTML = "passwords don't match";
+          break;
+        default:
+          const data = {
+            email: regEmail.value,
+            username: regUsername.value,
+            password: regPassword.value,
+          };
+          performHttpRequest("register", data);
+      }
+    });
 }
 
 export function clearSignUpErrorMessages() {

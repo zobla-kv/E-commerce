@@ -1,0 +1,41 @@
+#formContainer {
+  width: 50%;
+}
+
+#priceText {
+  position: relative;
+  left: 0.8%;
+}
+
+#priceInput {
+  margin-left: 15px;
+}
+
+#genderText {
+  position: relative;
+  left: -1.5%;
+}
+
+#pictureText {
+  position: relative;
+  left: 8.5%;
+}
+
+#pictureInput {
+  position: relative;
+  left: 15%;
+}
+
+@media only screen and (max-width: 724px) {
+  #pictureText {
+    left: -1%;
+  }
+
+  #priceText {
+    left: -2%;
+  }
+
+  #priceInput {
+    margin-left: 0;
+  }
+}

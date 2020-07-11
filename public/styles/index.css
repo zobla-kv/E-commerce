@@ -207,9 +207,19 @@ button {
   padding: 2px;
 }
 
-.item#profile {
+.item#profile,
+.item#dashboard {
   border-radius: 8px 8px 0 0;
   border-bottom: 1px solid red;
+}
+
+#profileDropdown a {
+  color: white;
+  text-decoration: none;
+}
+
+#profileDropdown a:visited {
+  color: white;
 }
 
 .item#logout {

@@ -6,15 +6,16 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   price: {
+    type: Number,
+    required: true,
+  },
+  gender: {
     type: String,
     required: true,
   },
   image: {
     type: Buffer,
     required: true,
-  },
-  cart: {
-    type: Array,
   },
 });
 

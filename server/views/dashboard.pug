@@ -1,0 +1,56 @@
+doctype html
+include partials/head
+link(rel='stylesheet' href='../styles/profile.css')
+link(rel='stylesheet' href='../styles/dashboard.css')
+section#navbar
+  #navbarItemsContainer.pagesContainer
+    .pages
+      p Home
+    .pages
+      p Shop
+    .pages
+      p About
+  #navbarItemsContainer.searchContainer
+    form#search
+      // prettier-ignore
+      input#searchInput.searchTerm(type='text' placeholder='What are you looking for?')
+      button.searchButton(type='submit')
+        i.fa.fa-search
+  #navbarItemsContainer.profile
+    div#cart
+      img(src="/assets/img/cart.png")
+    div#loggedInProfile
+      p #{username}
+    div#profileDropdown
+      a(href="/profile/" + _id)
+        div.item#profile profile
+        if admin
+            a(href="/dashboard")
+              div.item#dashboard dashboard
+        div.item#logout log out
+  div#updateProfile
+    p add product
+    div#dropdown
+      div#formContainer
+        form
+          label name: &nbsp
+          input(type="text")#nameInput
+          br
+          br
+          label#priceText price:
+          input(type="text")#priceInput
+          br
+          br
+          label#genderText gender:
+          input(type="text")#genderInput
+          br
+          br
+          label#pictureText picture:
+          input(type="file")#pictureInput
+      div#btnAndResponse
+        button#resetButton Add
+        div#response
+  script(src='/js/profile.js' type='module')
+  script(src='/js/dashboard.js' type='module')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js')

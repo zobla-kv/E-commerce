@@ -1,8 +1,7 @@
-const express = require("express");
-const router = express.Router();
-const isAuth = require("../middleware/isAuth");
+const router = require("express").Router();
+const setUser = require("../middleware/setUser");
 
-router.get("/", isAuth, (req, res) => {
+router.get("/", setUser, (req, res) => {
   res.render("about", req.user);
 });
 

@@ -28,10 +28,6 @@ const clearSearch = document.getElementById("clearSearch");
 const navbar = document.getElementById("navbar");
 navbar.style.display = "flex";
 
-itemImg.src = "../assets/img/item1.jpg";
-itemName.innerHTML = "Adidas ZX 500 ultra";
-itemPrice.innerHTML = "$50";
-
 clearSearch.addEventListener("click", () => {
   if (searchInput.value !== "") {
     searchInput.value = "";
