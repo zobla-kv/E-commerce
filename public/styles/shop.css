@@ -1,5 +1,5 @@
 body {
-  height: 850px;
+  height: 900px;
 }
 
 #contentContainer {
@@ -153,6 +153,7 @@ body {
   cursor: pointer;
   float: left;
   margin: 35px 5px 30px 15px;
+  display: block;
 }
 
 .productImgContainer {

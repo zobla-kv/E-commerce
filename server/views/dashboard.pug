@@ -22,11 +22,11 @@ section#navbar
     div#loggedInProfile
       p #{user.username}
     div#profileDropdown
-      a(href="/profile/" + _id)
+      a(href="/profile/" + user._id)
         div.item#profile profile
-          a(href="/dashboard")
-            div.item#dashboard dashboard
-        div.item#logout log out
+      a(href="/dashboard")
+          div.item#dashboard dashboard
+      div.item#logout log out
   div#updateProfile
     p add product
     div#dropdown

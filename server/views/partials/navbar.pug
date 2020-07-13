@@ -22,7 +22,7 @@ section#navbar
         div#loggedInProfile
           p #{user.name}
         div#profileDropdown
-          a(href="/profile/" + id)
+          a(href="/profile/" + user.id)
             div.item#profile profile
           if user.admin
             a(href="/dashboard")

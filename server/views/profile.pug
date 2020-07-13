@@ -19,9 +19,9 @@ section#navbar
     div#cart
       img(src="/assets/img/cart.png")
     div#loggedInProfile
-      p #{user.username}
+      p #{user.name}
     div#profileDropdown
-      a(href="/profile/" + _id)
+      a(href="/profile/" + user._id)
         div.item#profile profile
         if user.admin
           a(href="/dashboard")
