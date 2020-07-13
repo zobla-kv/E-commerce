@@ -6,7 +6,7 @@ const setUser = require("../middleware/setUser");
 router.use(bodyParser());
 
 router.get("/", setUser, (req, res) => {
-  res.render("index", req.user);
+  res.render("index", { user: req.user });
 });
 
 router.post("/", globalController);

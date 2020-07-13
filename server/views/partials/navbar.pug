@@ -13,18 +13,18 @@ section#navbar
       button.searchButton(type='submit')
         i.fa.fa-search
   #navbarItemsContainer.profile
-    if !loggedIn 
+    if !user.loggedIn 
         button#loginButton Login
         button#regButton Sign up
     else 
         div#cart
           img(src="/assets/img/cart.png")
         div#loggedInProfile
-          p #{name}
+          p #{user.name}
         div#profileDropdown
           a(href="/profile/" + id)
             div.item#profile profile
-          if admin
+          if user.admin
             a(href="/dashboard")
               div.item#dashboard dashboard
           div.item#logout log out

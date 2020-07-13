@@ -13,8 +13,8 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  image: {
-    type: Buffer,
+  imagePath: {
+    type: String,
     required: true,
   },
 });

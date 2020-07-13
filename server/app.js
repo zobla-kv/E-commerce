@@ -20,8 +20,9 @@ const profileRouter = require("./routes/profile");
 const dashboardRouter = require("./routes/dashboard");
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, "..", "/public")));
-app.use(express.static(path.join(__dirname, "..", "/public/js")));
+app.use(express.static(path.join(__dirname, "../public/")));
+app.use(express.static(path.join(__dirname, "../public/js")));
+app.use(express.static(path.join(__dirname, "../public/shop/uploads")));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,

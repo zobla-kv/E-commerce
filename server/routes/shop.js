@@ -1,8 +1,7 @@
 const router = require("express").Router();
 const setUser = require("../middleware/setUser");
+const productController = require("../controllers/productController");
 
-router.get("/", setUser, (req, res) => {
-  res.render("shop", req.user);
-});
+router.get("/", setUser, productController.get);
 
 module.exports = router;

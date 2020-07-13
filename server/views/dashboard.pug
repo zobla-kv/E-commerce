@@ -20,13 +20,12 @@ section#navbar
     div#cart
       img(src="/assets/img/cart.png")
     div#loggedInProfile
-      p #{username}
+      p #{user.username}
     div#profileDropdown
       a(href="/profile/" + _id)
         div.item#profile profile
-        if admin
-            a(href="/dashboard")
-              div.item#dashboard dashboard
+          a(href="/dashboard")
+            div.item#dashboard dashboard
         div.item#logout log out
   div#updateProfile
     p add product

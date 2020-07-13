@@ -5,7 +5,7 @@ const productController = require("../controllers/productController");
 router.use(upload());
 
 router.get("/", (req, res) => {
-  res.render("dashboard", req.user);
+  res.render("dashboard", { user: req.user });
 });
 
 router.post("/", productController.add);

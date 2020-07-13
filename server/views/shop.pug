@@ -11,30 +11,30 @@ section#contentContainer
         | brand
         #brandFilters
           label.brandItem
-            input(type='checkbox')
+            input(type='checkbox')#nikeFilter
             span.checkmark
             |                 nike
           label.brandItem
-            input(type='checkbox')
+            input(type='checkbox')#adidasFilter
             span.checkmark
             |                 adidas
           label.brandItem
-            input(type='checkbox')
+            input(type='checkbox')#pumaFilter
             span.checkmark
             |                 puma
           label.brandItem
-            input(type='checkbox')
+            input(type='checkbox')#reebokFilter
             span.checkmark
             |                 reebok
       #genderFiltersContainer
         | gender
         #genderFilters
           label.brandItem
-            input(type='checkbox')
+            input(type='checkbox')#maleFilter
             span.checkmark
             |                 male
           label.brandItem
-            input(type='checkbox')
+            input(type='checkbox')#femaleFilter
             span.checkmark
             |                 female
       #sortFiltersContainer
@@ -49,16 +49,12 @@ section#contentContainer
             span.checkmark
             |                 price
   #shopItemsContainer
-    .item
-      .itemImgContainer
-        img#itemImg
-      .itemName
-      .itemPrice
-    .item
-    .item
-    .item
-    .item
-    .item
+    each product in products
+      .product
+        .productImgContainer
+          img(src=product.imagePath).productImg
+        .productName #{product.name} - #{product.gender}
+        .productPrice #{product.price} $
   script(src='../js/shop.js' type='module')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js')

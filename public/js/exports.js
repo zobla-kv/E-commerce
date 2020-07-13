@@ -1,4 +1,4 @@
-const searchForm = document.getElementById("search");
+export const searchForm = document.getElementById("search");
 const searchTerm = document.getElementById("searchInput");
 const loginUsername = document.getElementById("loginUsername");
 const loginPassword = document.getElementById("loginPassword");
@@ -56,7 +56,6 @@ export function performHttpRequest(type, data) {
 }
 
 export function handleResponse(message) {
-  console.log(message);
   if (message === "success") {
     if (document.location.href.includes("profile"))
       return (document.location.href = "http://localhost:4000");
