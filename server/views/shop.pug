@@ -50,11 +50,12 @@ section#contentContainer
             |                 price
   #shopItemsContainer
     each product in products
-      .product
-        .productImgContainer
-          img(src=product.imagePath).productImg
-        .productName #{product.name} - #{product.gender}
-        .productPrice #{product.price} $
+      a(href="/shop/products/" + product.name)
+        .product
+          .productImgContainer
+            img(src=product.imagePath).productImg
+          .productName #{product.name} - #{product.gender}
+          .productPrice #{product.price} $
   script(src='../js/shop.js' type='module')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js')

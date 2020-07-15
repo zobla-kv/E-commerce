@@ -179,6 +179,10 @@ body {
   font-size: 18px;
 }
 
+a {
+  color: white;
+}
+
 @media only screen and (max-width: 910px) {
   #filtersContainer,
   #shopItemsContainer {

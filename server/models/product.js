@@ -19,11 +19,16 @@ function add(data, img){
     })
 }
 
-async function get() {
+async function getAll() {
   return await Product.find();
+}
+
+async function getSingle(name) {
+  return await Product.findOne({ name });
 }
 
 module.exports = {
   add,
-  get,
+  getAll,
+  getSingle,
 };
