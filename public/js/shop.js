@@ -11,6 +11,8 @@ page.removeCover();
 
 const navbar = document.getElementById("navbar");
 navbar.style.display = "flex";
+
+const search = document.getElementById("search");
 const searchInput = document.getElementById("searchInput");
 const clearSearch = document.getElementById("clearSearch");
 const nikeFilter = document.getElementById("nikeFilter");
@@ -20,13 +22,14 @@ const reebokFilter = document.getElementById("reebokFilter");
 const maleFilter = document.getElementById("maleFilter");
 const femaleFilter = document.getElementById("femaleFilter");
 const products = document.getElementsByClassName("product");
+const shopItemsContainer = document.getElementById("shopItemsContainer");
+const latestFilter = document.getElementById("latestFilter");
+const priceFilter = document.getElementById("priceFilter");
 
 if (sessionStorage.getItem("pageChanger") === "navbar")
   sessionStorage.setItem("searchTerm", "all");
-else {
-  searchInput.value = sessionStorage.getItem("searchTerm");
-  if (searchInput.value === "all") searchInput.value = "";
-}
+else searchInput.value = sessionStorage.getItem("searchTerm");
+if (searchInput.value === "all") searchInput.value = "";
 
 const brandFilters = [nikeFilter, adidasFilter, pumaFilter, reebokFilter];
 const brandFilterKeywords = ["Nike", "Adidas", "Puma", "Reebok"];
@@ -36,9 +39,49 @@ const genderFilters = [maleFilter, femaleFilter];
 const genderFilterKeywords = ["M", "F"];
 const selectedGenderFilters = [];
 
+const allFilters = [
+  ...brandFilters,
+  ...genderFilters,
+  latestFilter,
+  priceFilter,
+];
+
 const items = Array.from(products);
+const regularSortedItems = [...items];
 
 items.forEach((e) => (e.style.display = "block"));
+
+performSearch(sessionStorage.getItem("searchTerm"));
+
+//prettier-ignore
+function performSearch(searchTerm) {
+  if (searchTerm === "all") {
+    for (let i = 0; i < items.length; i++) items[i].style.display = "block";
+  } else {
+    items.forEach((e) => {
+      if (e.innerText.split("-")[0].toLowerCase().includes(searchTerm.toLowerCase())) {
+        console.log("fired");
+        e.style.display = "block";
+      } else {
+        e.style.display = "none";
+        console.log("fired here");
+      }
+    });
+  }
+}
+
+function clearFilters() {
+  for (let i = 0; i < allFilters.length; i++)
+    if (allFilters[i].checked === true) allFilters[i].click();
+  allFilters[6].click();
+  searchInput.value = "";
+}
+
+// prettier-ignore
+const productNames = items.map((e) => e.children[1].innerHTML.split("-")[0].toLowerCase());
+const sortedProductNames = [];
+
+// prettier-ignore
 
 // prettier-ignore
 for (let i = 0; i < brandFilters.length; i++)
@@ -60,12 +103,13 @@ function removeBrandFilter(selectedBrandFilters, brandFilterKeywords,i){;
     if(selectedBrandFilters.length === 0) displayAll(selectedGenderFilters, 'gender')
 }
 
+// prettier-ignore
 function displaySelectedBrands() {
+  sessionStorage.setItem('searchTerm', 'all')
+  searchInput.value = ''
   items.forEach((e) => {
     const brand = e.children[1].innerHTML.split(" ")[0];
-    const gender = e.children[1].innerHTML.substr(
-      e.children[1].innerHTML.length - 1
-    );
+    const gender = e.children[1].innerHTML.substr(e.children[1].innerHTML.length - 1);
     if (selectedBrandFilters.includes(brand))
       if (selectedGenderFilters.length > 0) {
         if (selectedGenderFilters.includes(gender)) e.style.display = "block";
@@ -105,6 +149,8 @@ for(let i=0;i<genderFilters.length;i++)
 genderFilters[i].addEventListener('change', function(){
   if(this.checked){
     selectedGenderFilters.push(genderFilterKeywords[i]);
+    sessionStorage.setItem('searchTerm', 'all')
+    searchInput.value = ''
     items.forEach(e => {
       const gender = e.children[1].innerHTML.substr(e.children[1].innerHTML.length - 1)
       const brand = e.children[1].innerHTML.split(" ")[0];
@@ -132,21 +178,17 @@ genderFilters[i].addEventListener('change', function(){
 })
 
 // sort
-const shopItemsContainer = document.getElementById("shopItemsContainer");
-const latestFilter = document.getElementById("latestFilter");
-const priceFilter = document.getElementById("priceFilter");
-const regularSortedItems = [...items];
 
+// prettier-ignore
 priceFilter.addEventListener("change", function () {
   if (this.checked) {
     items.sort(function (a, b) {
-      return (
-        Number(b.children[2].innerHTML.split(" ")[0]) -
-        Number(a.children[2].innerHTML.split(" ")[0])
-      );
+      return (Number(b.children[2].innerHTML.split(" ")[0]) - Number(a.children[2].innerHTML.split(" ")[0]));
     });
-    for (let i = 0; i < items.length; i++)
+    for (let i = 0; i < items.length; i++){
       shopItemsContainer.appendChild(items[i]);
+      sortedProductNames.push(items[i].innerText.split("-")[0]);
+    }
   }
 });
 
@@ -157,9 +199,9 @@ latestFilter.addEventListener("change", function () {
 });
 
 clearSearch.addEventListener("click", () => {
-  if (searchInput.value !== "") {
-    searchInput.value = "";
-    sessionStorage.setItem("searchTerm", "all");
-    page.performHttpRequest("search", "all");
+  clearFilters();
+  for (let i = 0; i < items.length; i++) {
+    shopItemsContainer.appendChild(items[i]);
+    items[i].style.display = "block";
   }
 });

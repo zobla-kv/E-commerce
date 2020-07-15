@@ -1,4 +1,4 @@
-export const searchForm = document.getElementById("search");
+const searchForm = document.getElementById("search");
 const searchTerm = document.getElementById("searchInput");
 const loginUsername = document.getElementById("loginUsername");
 const loginPassword = document.getElementById("loginPassword");
@@ -38,7 +38,7 @@ export function addSearchFunctionality() {
       sessionStorage.setItem("searchTerm", searchTerm.value);
       sessionStorage.setItem("pageChanger", "form");
       window.location.href = "http://localhost:4000/shop";
-    } else performHttpRequest("search", searchTerm.value);
+    }
   });
 }
 
@@ -55,9 +55,10 @@ export function performHttpRequest(type, data) {
     .then((data) => handleResponse(data.message));
 }
 
+// prettier-ignore
 export function handleResponse(message) {
   if (message === "success") {
-    if (document.location.href.includes("profile"))
+    if (document.location.href.includes("profile") || document.location.href.includes("dashboard"))
       return (document.location.href = "http://localhost:4000");
     else return document.location.reload();
   }
