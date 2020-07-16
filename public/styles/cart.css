@@ -1,0 +1,44 @@
+body {
+  overflow-x: auto;
+  height: 600px;
+}
+
+#itemsContainer {
+  position: absolute;
+  top: 180px;
+  width: 80%;
+  min-width: 600px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-collapse: collapse;
+}
+
+th {
+  border-right: 2px solid red;
+  border-bottom: 2px solid red;
+  font-size: 20px;
+}
+
+#itemValues td {
+  text-align: center;
+  font-size: 18px;
+  border-bottom: 2px solid red;
+  padding: 5px;
+}
+
+#priceTh {
+  border-right: 0;
+}
+
+a {
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
+
+#total {
+  float: right;
+  padding: 5px;
+  font-size: 20px;
+}

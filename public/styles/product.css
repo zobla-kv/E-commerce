@@ -149,8 +149,7 @@ body {
 
 @media only screen and (max-width: 800px) {
   #content {
-    height: 120vh;
-    left: -1%;
+    height: 130vh;
     display: block;
     background-image: linear-gradient(
       360deg,
@@ -158,11 +157,104 @@ body {
       rgba(105, 15, 15, 1) 0%,
       rgba(0, 0, 0, 0) 95%
     );
+    width: 101%;
+    border-radius: 0;
   }
 
   #imageContainer,
   #infoContainer {
     height: 50%;
     margin: auto;
+  }
+
+  #imageContainer {
+    width: 350px;
+  }
+
+  #infoContainer {
+    width: 80%;
+    text-align: center;
+  }
+
+  #name,
+  #gender,
+  #price {
+    font-size: 22px;
+  }
+
+  #gender,
+  #price {
+    margin-top: 20px;
+  }
+
+  .tag {
+    width: 100%;
+    display: block;
+    margin-bottom: 0;
+  }
+
+  #quantityText {
+    margin-left: -47px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #content {
+    margin-top: 50px;
+    height: 95vh;
+  }
+  #imageContainer {
+    width: 250px;
+    height: 250px;
+  }
+
+  #name,
+  #gender,
+  #price {
+    font-size: 18px;
+  }
+
+  .tag {
+    margin-right: -50px;
+  }
+
+  #addToCartContainer {
+    display: block;
+    text-align: center;
+  }
+
+  #quantityContainer {
+    min-width: 100%;
+    max-width: 200px;
+  }
+
+  #quantityText {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    margin-top: -30px;
+    margin-left: 5px;
+  }
+
+  #quantity {
+    margin-top: -2px;
+  }
+
+  #add {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  #imageContainer {
+    width: 200px;
+    height: 200px;
+  }
+
+  #infoContainer {
+    width: 100%;
+    padding-left: 10px;
   }
 }

@@ -49,6 +49,12 @@ const allFilters = [
 const items = Array.from(products);
 const regularSortedItems = [...items];
 
+for (let i = 0; i < regularSortedItems.length; i++)
+  regularSortedItems[i].addEventListener("click", () => {
+    document.location.href =
+      "/shop/products/" + regularSortedItems[i].innerText.split("-")[0];
+  });
+
 items.forEach((e) => (e.style.display = "block"));
 
 performSearch(sessionStorage.getItem("searchTerm"));
@@ -60,11 +66,9 @@ function performSearch(searchTerm) {
   } else {
     items.forEach((e) => {
       if (e.innerText.split("-")[0].toLowerCase().includes(searchTerm.toLowerCase())) {
-        console.log("fired");
         e.style.display = "block";
       } else {
         e.style.display = "none";
-        console.log("fired here");
       }
     });
   }

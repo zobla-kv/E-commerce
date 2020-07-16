@@ -1,0 +1,26 @@
+doctype html
+include partials/head
+link(rel='stylesheet' href='../styles/cart.css')
+include partials/navbar
+section#content
+    table#itemsContainer
+        tr
+            th Name
+            th Gender
+            th Quantity
+            th#priceTh Price
+        tr
+        each item in cartItems
+            tr#itemValues
+               td #[a(href = "/shop/products/" + item.name) #{item.name}] 
+               td #{item.gender}
+               td #{item.quantity}
+               td #{item.price} $
+        tr
+            td
+            td
+            td
+            td#total = #{totalPrice} $
+script(src='/js/cart.js' type='module')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js')

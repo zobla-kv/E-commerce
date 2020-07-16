@@ -18,6 +18,7 @@ const shopRouter = require("./routes/shop");
 const aboutRouter = require("./routes/about");
 const profileRouter = require("./routes/profile");
 const dashboardRouter = require("./routes/dashboard");
+const cartRouter = require("./routes/cart");
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, "../public/")));
@@ -50,5 +51,7 @@ app.use("/about", aboutRouter);
 app.use("/profile", profileRouter);
 
 app.use("/dashboard", dashboardRouter);
+
+app.use("/cart", cartRouter);
 
 app.listen(4000);
