@@ -1,5 +1,5 @@
 body {
-  overflow-x: auto;
+  overflow: auto;
   height: 600px;
 }
 
@@ -12,6 +12,7 @@ body {
   right: 0;
   margin: auto;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 th {
@@ -41,4 +42,14 @@ a {
   float: right;
   padding: 5px;
   font-size: 20px;
+}
+
+.remove {
+  position: absolute;
+  right: 0;
+  border-radius: 18px;
+}
+
+.remove:active {
+  border-color: red;
 }

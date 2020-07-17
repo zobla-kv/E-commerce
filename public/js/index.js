@@ -23,6 +23,7 @@ page.addLoginSubmitFunctionality();
 page.addRegButtonFunctionality();
 page.addRegSubmitFunctionality();
 page.addLogOutButtonFunctionality();
+page.addCartFunctionality();
 page.removeCover();
 
 const slideShowImages = [

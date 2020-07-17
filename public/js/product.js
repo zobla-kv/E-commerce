@@ -7,7 +7,7 @@ let name = document.getElementById("value").innerText;
 const gender = document.getElementById("genderValue");
 const price = document.getElementById("price").innerText;
 
-const priceValue = price.split(":")[1].split(" ")[1].replace(/\s/g, "");
+const priceValue = price.split(":")[1].split(" ")[0].replace(/\s/g, "");
 
 if (gender.innerHTML === "M") gender.innerHTML = "male";
 else gender.innerHTML = "female";
@@ -19,6 +19,7 @@ page.addLoginSubmitFunctionality();
 page.addRegButtonFunctionality();
 page.addRegSubmitFunctionality();
 page.addLogOutButtonFunctionality();
+page.addCartFunctionality();
 page.removeCover();
 
 const quantity = document.getElementById("quantity");

@@ -18,6 +18,15 @@ async function get(userId) {
   return user.cart;
 }
 
+async function remove(product, userId) {
+  const user = await User.findOneAndUpdate(
+    { _id: userId },
+    { $pull: { cart: { name: product } } },
+    { new: true }
+  );
+  return getNewPrice(user.cart);
+}
+
 function isProductInCart(product, cart) {
   let productFound = { found: false, index: -1 };
   for (let i = 0; i < cart.length; i++)
@@ -30,7 +39,15 @@ function isProductInCart(product, cart) {
   return productFound;
 }
 
+function getNewPrice(cart) {
+  let total = 0;
+  for (let i = 0; i < cart.length; i++)
+    total += cart[i].price * cart[i].quantity;
+  return total;
+}
+
 module.exports = {
   add,
   get,
+  remove,
 };

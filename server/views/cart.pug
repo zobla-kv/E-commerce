@@ -9,13 +9,12 @@ section#content
             th Gender
             th Quantity
             th#priceTh Price
-        tr
         each item in cartItems
             tr#itemValues
                td #[a(href = "/shop/products/" + item.name) #{item.name}] 
                td #{item.gender}
                td #{item.quantity}
-               td #{item.price} $
+               td #{item.price} $ #[button.remove X]
         tr
             td
             td

@@ -16,6 +16,7 @@ const signValErr = document.getElementsByClassName("signUpValidationError");
 const logOut = document.getElementById("logout");
 const pages = document.getElementsByClassName("pages");
 const sections = document.getElementsByTagName("section");
+const cart = document.getElementById("cart");
 
 export const tl = new TimelineMax();
 
@@ -40,6 +41,11 @@ export function addSearchFunctionality() {
       window.location.href = "http://localhost:4000/shop";
     }
   });
+}
+
+export function addCartFunctionality() {
+  if (cart)
+    cart.addEventListener("click", () => (window.location.href = "/cart"));
 }
 
 export function performHttpRequest(type, data) {

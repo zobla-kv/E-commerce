@@ -11,6 +11,14 @@ async function get(req, res) {
   res.render("cart", { cartItems, totalPrice });
 }
 
+async function remove(req, res) {
+  const newPrice = await cart.remove(
+    req.body.productName,
+    req.session.passport.user
+  );
+  res.status(200).json({ newPrice });
+}
+
 function getTotalPrice(cartItems) {
   let total = 0;
   for (let i = 0; i < cartItems.length; i++)
@@ -21,4 +29,5 @@ function getTotalPrice(cartItems) {
 module.exports = {
   add,
   get,
+  remove,
 };
