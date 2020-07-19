@@ -64,7 +64,7 @@ export function performHttpRequest(type, data) {
 // prettier-ignore
 export function handleResponse(message) {
   if (message === "success") {
-    if (document.location.href.includes("profile") || document.location.href.includes("dashboard"))
+    if (document.location.href.includes("profile") || document.location.href.includes("dashboard") || document.location.href.includes("cart"))
       return (document.location.href = "http://localhost:4000");
     else return document.location.reload();
   }

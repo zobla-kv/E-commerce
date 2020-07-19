@@ -20,6 +20,11 @@ const priceField = document.getElementById("priceInput");
 const genderField = document.getElementById("genderInput");
 const pictureField = document.getElementById("pictureInput");
 const response = document.getElementById("response");
+const orders = document.getElementById("orders");
+const body = document.getElementsByTagName("body")[0];
+const table = document.getElementById("ordersContainer");
+const remove = document.getElementsByClassName("remove");
+const removeBtns = Array.from(remove);
 
 addButton.addEventListener("click", () => {
   const formData = new FormData();
@@ -42,16 +47,24 @@ addButton.addEventListener("click", () => {
 });
 
 let dropdownActive = false;
+let ordersDropdownActive = false;
 
 addProduct.addEventListener("click", () => {
   dropdownActive === false ? animateDrop() : animateLift(event.target);
+});
+
+orders.addEventListener("click", () => {
+  ordersDropdownActive === false
+    ? animateOrdersDrop()
+    : animateOrdersLift(event.target);
 });
 
 const tl = page.tl;
 
 //prettier-ignore
 function animateDrop() {
-  tl.fromTo(addProduct, 0.5, {}, { height: '340px'});
+  tl.fromTo(addProduct, 0.5, {}, { height: '340px'})
+    .fromTo(orders, 0.5, {marginTop: '230px'}, { marginTop: '540px'},"-=1")
   dropdownActive = true;
 }
 
@@ -59,6 +72,41 @@ function animateDrop() {
 function animateLift(e) {
   if(e.tagName !== 'INPUT' && e.tagName !== 'BUTTON'){
     tl.fromTo(updateProfile, 0.5, {}, {height: '5vh'})
+      .fromTo(orders, 0.5, {marginTop: '560px'}, { marginTop: '230px'}, "-=1")
     dropdownActive = false;
   }
 }
+
+let ordersContainerHeight = 100;
+for (let i = 0; i < table.rows.length; i++) ordersContainerHeight += 50;
+
+function animateOrdersDrop() {
+  tl.fromTo(orders, 0.5, {}, { height: ordersContainerHeight });
+  ordersDropdownActive = true;
+}
+
+//prettier-ignore
+function animateOrdersLift(e) {
+  if(e.tagName !== 'BUTTON'){
+    tl.fromTo(orders, 0.5, {}, {height: '5vh'})
+    ordersDropdownActive = false;
+  }
+}
+
+// prettier - ignore;
+for (let i = 0; i < removeBtns.length; i++)
+  removeBtns[i].addEventListener("click", function () {
+    const order = this.parentNode.parentNode.children[0].innerHTML;
+    fetch("http://localhost:4000/dashboard", {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ order }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        const row = this.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+      });
+  });

@@ -1,3 +1,12 @@
+body {
+  overflow-x: auto;
+}
+
+:root {
+  --table-border: 2px solid white;
+  --page-font: "Courier New", Courier, monospace;
+}
+
 #formContainer {
   width: 50%;
 }
@@ -24,6 +33,74 @@
 #pictureInput {
   position: relative;
   left: 15%;
+}
+
+#orders {
+  min-width: 600px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top: 230px;
+  width: 90%;
+  height: 5vh;
+  border: 1px solid red;
+  text-align: center;
+  background: rgba(255, 0, 0, 0.3);
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 25px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+th {
+  border-right: var(--table-border);
+  border-bottom: var(--table-border);
+  font-size: 20px;
+  font-family: var(--page-font);
+}
+
+#values td {
+  text-align: center;
+  font-size: 18px;
+  border-bottom: var(--table-border);
+  padding: 5px;
+  font-family: var(--page-font);
+}
+
+#ordersDropdown {
+  cursor: default;
+  min-width: 600px;
+  margin-top: 20px;
+  table-layout: fixed;
+}
+
+#name {
+  width: 130px;
+}
+
+#price {
+  width: 130px;
+}
+
+#priceTh {
+  border-right: none;
+}
+
+.remove {
+  position: absolute;
+  right: 0;
+  border-radius: 18px;
+}
+
+.remove:active {
+  border-color: red;
 }
 
 @media only screen and (max-width: 724px) {

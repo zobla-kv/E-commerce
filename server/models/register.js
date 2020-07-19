@@ -1,5 +1,6 @@
 const User = require("./schemas/user");
 const bcrypt = require("bcrypt");
+const sendEmail = require("../middleware/sendEmail");
 
 //prettier-ignore
 async function createUser(data) {
@@ -11,6 +12,7 @@ async function createUser(data) {
       const hashedPassword = await bcrypt.hash(password, salt);
       const user = new User({email, username, password: hashedPassword, admin: false, cart: [], activated: false});
       await user.save();
+      sendEmail(email, username);
       return "User created";
   } catch (err) {
       return err.message;

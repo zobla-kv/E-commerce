@@ -27,20 +27,20 @@ section#navbar
           a(href="/dashboard")
              div.item#dashboard dashboard
         div.item#logout log out
-  div#updateProfile
-    p update profile
-    div#dropdown
-      div#formContainer
-        form
-          label new password: &nbsp
-          input(type="password")
-          br
-          br
-          label#repeatPwText repeat password:
-          input(type="password")#repeatInput
-      div#btnAndResponse
-        button#resetButton Reset
-        div#response
+div#updateProfile
+  p update profile
+  div#dropdown
+    div#formContainer
+      form
+        label new password: &nbsp
+        input(type="password")
+        br
+        br
+        label#repeatPwText repeat password:
+        input(type="password")#repeatInput
+    div#btnAndResponse
+      button#resetButton Reset
+      div#response
   script(src='/js/profile.js' type='module')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js')

@@ -5,9 +5,9 @@ navbar.style.display = "flex";
 
 let name = document.getElementById("value").innerText;
 const gender = document.getElementById("genderValue");
-const price = document.getElementById("price").innerText;
+const price = document.getElementById("price").innerHTML;
 
-const priceValue = price.split(":")[1].split(" ")[0].replace(/\s/g, "");
+const priceValue = price.split(" ")[2];
 
 if (gender.innerHTML === "M") gender.innerHTML = "male";
 else gender.innerHTML = "female";

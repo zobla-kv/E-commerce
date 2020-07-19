@@ -1,4 +1,5 @@
 const User = require("./schemas/user");
+const Order = require("./schemas/order");
 
 async function add(product, userId) {
   const user = await User.findById(userId);
@@ -27,6 +28,14 @@ async function remove(product, userId) {
   return getNewPrice(user.cart);
 }
 
+// prettier-ignore
+async function createOrder(userId) {
+  const user = await User.findById(userId);
+  const orderObject = generateOrder(user.username, user.cart);
+  const order = new Order({name: orderObject.user , products: orderObject.products, price: orderObject.price});
+  order.save()
+}
+
 function isProductInCart(product, cart) {
   let productFound = { found: false, index: -1 };
   for (let i = 0; i < cart.length; i++)
@@ -46,8 +55,23 @@ function getNewPrice(cart) {
   return total;
 }
 
+function generateOrder(user, cart) {
+  const products = [];
+  let price = 0;
+  for (let i = 0; i < cart.length; i++) {
+    products.push(`${cart[i].name} x ${cart[i].quantity}`);
+    price += cart[i].price * cart[i].quantity;
+  }
+  return {
+    user,
+    products,
+    price,
+  };
+}
+
 module.exports = {
   add,
   get,
   remove,
+  createOrder,
 };

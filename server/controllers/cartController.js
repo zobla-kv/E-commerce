@@ -19,6 +19,11 @@ async function remove(req, res) {
   res.status(200).json({ newPrice });
 }
 
+async function createOrder(req, res) {
+  await cart.createOrder(req.session.passport.user);
+  res.status(201).json({ message: "Order created" });
+}
+
 function getTotalPrice(cartItems) {
   let total = 0;
   for (let i = 0; i < cartItems.length; i++)
@@ -30,4 +35,5 @@ module.exports = {
   add,
   get,
   remove,
+  createOrder,
 };

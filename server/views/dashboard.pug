@@ -27,29 +27,41 @@ section#navbar
       a(href="/dashboard")
           div.item#dashboard dashboard
       div.item#logout log out
-  div#updateProfile
-    p add product
-    div#dropdown
-      div#formContainer
-        form
-          label name: &nbsp
-          input(type="text")#nameInput
-          br
-          br
-          label#priceText price:
-          input(type="text")#priceInput
-          br
-          br
-          label#genderText gender:
-          input(type="text")#genderInput
-          br
-          br
-          label#pictureText picture:
-          input(type="file")#pictureInput
-      div#btnAndResponse
-        button#resetButton Add
-        div#response
-  script(src='/js/profile.js' type='module')
-  script(src='/js/dashboard.js' type='module')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js')
+div#updateProfile
+  p add product
+  div#dropdown
+    div#formContainer
+      form
+        label name: &nbsp
+        input(type="text")#nameInput
+        br
+        br
+        label#priceText price:
+        input(type="text")#priceInput
+        br
+        br
+        label#genderText gender:
+        input(type="text")#genderInput
+        br
+        br
+        label#pictureText picture:
+        input(type="file")#pictureInput
+    div#btnAndResponse
+      button#resetButton Add
+      div#response
+div#orders orders
+  div#ordersDropdown
+     table#ordersContainer
+        tr
+            th Name
+            th Products
+            th#priceTh Price
+        each order in orders
+            tr#values
+               td#name #{order.name}
+               td #{order.products}
+               td#price #{order.price} $ #[button.remove X]
+script(src='/js/profile.js' type='module')
+script(src='/js/dashboard.js' type='module')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js')
