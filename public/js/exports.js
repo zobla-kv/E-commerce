@@ -14,6 +14,7 @@ const regPassword = document.getElementById("regPassword");
 const regPasswordRepeat = document.getElementById("regPasswordRepeat");
 const signValErr = document.getElementsByClassName("signUpValidationError");
 const logOut = document.getElementById("logout");
+const passwordReset = document.getElementById("passwordReset");
 const pages = document.getElementsByClassName("pages");
 const sections = document.getElementsByTagName("section");
 const cart = document.getElementById("cart");
@@ -68,9 +69,8 @@ export function handleResponse(message) {
       return (document.location.href = "http://localhost:4000");
     else return document.location.reload();
   }
-  message === "User created"
-    ? (document.location.href = "http://localhost:4000/verify")
-    : (signValErr["repeatPasswordError"].innerHTML = message);
+  if(message === 'User created' || message === 'Email not verified') document.location.href = "http://localhost:4000/verify"
+  if(message === 'Username taken') signValErr["repeatPasswordError"].innerHTML = message
 }
 
 export function addLoginSubmitFunctionality() {

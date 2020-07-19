@@ -20,6 +20,8 @@ const profileRouter = require("./routes/profile");
 const dashboardRouter = require("./routes/dashboard");
 const cartRouter = require("./routes/cart");
 const verifyRouter = require("./routes/verify");
+const activationRouter = require("./routes/activation");
+const resetPasswordRouter = require("./routes/resetPassword");
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, "../public/")));
@@ -56,5 +58,9 @@ app.use("/dashboard", dashboardRouter);
 app.use("/cart", cartRouter);
 
 app.use("/verify", verifyRouter);
+
+app.use("/activation", activationRouter);
+
+app.use("/resetPassword", resetPasswordRouter);
 
 app.listen(4000);
