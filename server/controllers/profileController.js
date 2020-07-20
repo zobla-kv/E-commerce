@@ -5,6 +5,11 @@ async function getUser(req, res) {
   res.render("profile", user);
 }
 
+function redirect(req, res) {
+  if (!req.session.passport || !req.session.passport.user) res.sendStatus(401);
+  else res.redirect(`/profile/${req.session.passport.user}`);
+}
+
 async function changePassword(req, res) {
   await profile.changePassword(req);
   res.status(200).json({ message: "password updated" });
@@ -33,6 +38,7 @@ async function setNewPassword(req, res) {
 
 module.exports = {
   getUser,
+  redirect,
   changePassword,
   verifyEmail,
   emailPasswordReset,

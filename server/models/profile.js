@@ -36,7 +36,7 @@ async function emailPasswordReset(email) {
 
 //prettier-ignore
 async function verifyToken(token) {
-  return jwt.verify(token,process.env.JWT_SECRET,{ expiresIn: "1h" },(err, decoded) => {
+  return jwt.verify(token,process.env.JWT_SECRET,(err, decoded) => {
       if (err) return "invalid token";
       else return decoded;
     }

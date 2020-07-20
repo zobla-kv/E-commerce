@@ -11,7 +11,7 @@ function login(req, res, next) {
 
 function logout(req, res) {
   req.logout();
-  res.json({ message: "success" });
+  req.session.destroy(() => res.json({ message: "success" }));
 }
 
 module.exports = {
