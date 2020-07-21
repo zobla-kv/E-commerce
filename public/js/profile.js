@@ -1,17 +1,18 @@
-import * as page from "../exports.js";
+import {
+  addSearchFunctionality as search,
+  addPageSwitchFunctionality as pageSwitch,
+  addLogOutButtonFunctionality as logout,
+  addCartFunctionality as cart,
+  tl as animation,
+} from "../exports.js";
 
 const navbar = document.getElementById("navbar");
 navbar.style.display = "flex";
 
-page.addSearchFunctionality();
-page.addPageSwitchFunctionality();
-page.addLoginButtonFunctionality();
-page.addLoginSubmitFunctionality();
-page.addRegButtonFunctionality();
-page.addRegSubmitFunctionality();
-page.addLogOutButtonFunctionality();
-page.addCartFunctionality();
-page.removeCover();
+search();
+pageSwitch();
+logout();
+cart();
 
 const updateProfile = document.getElementById("updateProfile");
 const resetButton = document.getElementById("resetButton");
@@ -33,11 +34,12 @@ resetButton.addEventListener("click", () => {
 
 let dropdownActive = false;
 
-updateProfile.addEventListener("click", () => {
-  dropdownActive === false ? animateDrop() : animateLift(event.target);
-});
+if (updateProfile)
+  updateProfile.addEventListener("click", () => {
+    dropdownActive === false ? animateDrop() : animateLift(event.target);
+  });
 
-const tl = page.tl;
+const tl = animation;
 
 //prettier-ignore
 function animateDrop() {

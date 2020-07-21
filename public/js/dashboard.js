@@ -1,19 +1,20 @@
-import * as page from "../exports.js";
+import {
+  addSearchFunctionality as search,
+  addPageSwitchFunctionality as pageSwitch,
+  addLogOutButtonFunctionality as logout,
+  addCartFunctionality as cart,
+  tl as animation,
+} from "../exports.js";
 
 const navbar = document.getElementById("navbar");
 navbar.style.display = "flex";
 
-page.addSearchFunctionality();
-page.addPageSwitchFunctionality();
-page.addLoginButtonFunctionality();
-page.addLoginSubmitFunctionality();
-page.addRegButtonFunctionality();
-page.addRegSubmitFunctionality();
-page.addLogOutButtonFunctionality();
-page.addCartFunctionality();
-page.removeCover();
+search();
+pageSwitch();
+logout();
+cart();
 
-const addProduct = document.getElementById("updateProfile");
+const addProduct = document.getElementById("addProduct");
 const addButton = document.getElementById("resetButton");
 const nameField = document.getElementById("nameInput");
 const priceField = document.getElementById("priceInput");
@@ -59,20 +60,20 @@ orders.addEventListener("click", () => {
     : animateOrdersLift(event.target);
 });
 
-const tl = page.tl;
+const tl = animation;
 
 //prettier-ignore
 function animateDrop() {
   tl.fromTo(addProduct, 0.5, {}, { height: '340px'})
-    .fromTo(orders, 0.5, {marginTop: '230px'}, { marginTop: '540px'},"-=1")
+    .fromTo(orders, 0.5, {marginTop: '230px'}, { marginTop: '540px'},"-=0.5")
   dropdownActive = true;
 }
 
 //prettier-ignore
 function animateLift(e) {
   if(e.tagName !== 'INPUT' && e.tagName !== 'BUTTON'){
-    tl.fromTo(updateProfile, 0.5, {}, {height: '5vh'})
-      .fromTo(orders, 0.5, {marginTop: '560px'}, { marginTop: '230px'}, "-=1")
+    tl.fromTo(addProduct, 0.5, {}, {height: '5vh'})
+      .fromTo(orders, 0.5, {marginTop: '560px'}, { marginTop: '230px'}, "-=0.5")
     dropdownActive = false;
   }
 }

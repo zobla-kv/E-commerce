@@ -13,18 +13,22 @@ section#contentContainer
           label.brandItem
             input(type='checkbox')#nikeFilter
             span.checkmark
+            div.marks
             |                 nike
           label.brandItem
             input(type='checkbox')#adidasFilter
             span.checkmark
+            div.marks
             |                 adidas
           label.brandItem
             input(type='checkbox')#pumaFilter
             span.checkmark
+            div.marks
             |                 puma
           label.brandItem
             input(type='checkbox')#reebokFilter
             span.checkmark
+            div.marks
             |                 reebok
       #genderFiltersContainer
         | gender
@@ -32,10 +36,12 @@ section#contentContainer
           label.brandItem
             input(type='checkbox')#maleFilter
             span.checkmark
+            div.marks
             |                 male
           label.brandItem
             input(type='checkbox')#femaleFilter
             span.checkmark
+            div.marks
             |                 female
       #sortFiltersContainer
         | sort by
@@ -43,10 +49,13 @@ section#contentContainer
           label.brandItem
             input(type='radio' name='sort' checked='true')#latestFilter
             span.checkmark
+            div.marks
             |                 latest
           label.brandItem
             input(type='radio' name='sort')#priceFilter
             span.checkmark
+            div.marks
+            
             |                 price
   #shopItemsContainer
     each product in products

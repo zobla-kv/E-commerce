@@ -1,5 +1,5 @@
 const navbar = document.getElementById("navbar");
-const navbarItems = document.getElementsByClassName("items");
+const navbarItems = document.getElementsByClassName("navbarItemsContainer");
 const welcomeContainer = document.getElementById("welcomeContainer");
 const welcomeCentral = document.getElementById("welcomeCentral");
 const welcomeLeft = document.getElementById("welcomeLeft");
@@ -101,24 +101,22 @@ window.addEventListener("scroll", () => {
 
 const tl = page.tl;
 
-setTimeout(() => {
+// prettier-ignore
+if (!sessionStorage.getItem("firstVisit")) {
+  setTimeout(() => {
+    navbar.style.display = "flex";
+    welcomeContainer.style.display = "flex";
+
+    tl.fromTo(welcomeContainer,1, { width: "0" },{ width: "64%", ease: Power2.easeInOut })
+      .fromTo(welcomeCentral, 1, { opacity: "0" }, { opacity: "1" })
+      .fromTo(welcomeLeft, 1, { opacity: "0" }, { opacity: "1" }, "-=0.4")
+      .fromTo(welcomeRight, 1, { opacity: "0" }, { opacity: "1" },"-=0.5")
+      .fromTo(navbar, 1, { opacity: "0" }, { opacity: "1" }, "-=0.5")
+      .fromTo(navbarItems, 1, { marginLeft: "-2%" }, { marginLeft: "0%" }, "-=1.2")
+      .fromTo(slideShowPrice, 1, { scale: "0" }, { scale: "1" });
+  }, 1000);
+  sessionStorage.setItem("firstVisit", "true");
+} else {
   navbar.style.display = "flex";
   welcomeContainer.style.display = "flex";
-
-  // tl.fromTo(navbarItems, 1, { marginLeft: "-10%" }, { marginLeft: "0%" })
-  //   //prettier-ignore
-  //   .fromTo(navbarItems, 1, { opacity: "0" }, { opacity: "1" }, "-=0.5")
-  //   // prettier-ignore
-  //   .fromTo(
-  //     welcomeContainer,
-  //     1,
-  //     { width: "0" },
-  //     { width: "64%", ease: Power2.easeInOut },
-  //     "-=0.2"
-  //   )
-  //   //prettier-ignore
-  //   .fromTo(welcomeCentral, 1, { opacity: "0" }, { opacity: "1" })
-  //   .fromTo(welcomeLeft, 1, { opacity: "0" }, { opacity: "1" }, "+=0.3")
-  //   .fromTo(welcomeRight, 1, { opacity: "0" }, { opacity: "1" }, "-=0.3")
-  //   .fromTo(slideShowPrice, 1, { scale: "0" }, { scale: "1" });
-}, 500);
+}

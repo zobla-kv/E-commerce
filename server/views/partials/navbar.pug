@@ -1,18 +1,18 @@
 section#navbar
-  #navbarItemsContainer.pagesContainer
+  .navbarItemsContainer.pagesContainer
     .pages
       p Home
     .pages
       p Shop
     .pages
       p About
-  #navbarItemsContainer.searchContainer
+  .navbarItemsContainer.searchContainer
     form#search
       // prettier-ignore
       input#searchInput.searchTerm(type='text' placeholder='What are you looking for?')
       button#searchButton(type='submit')
         i.fa.fa-search
-  #navbarItemsContainer.profile
+  .navbarItemsContainer.profile
     if !user.loggedIn 
         button#loginButton Login
         button#regButton Sign up
@@ -40,12 +40,7 @@ form#loginForm
   a#passwordReset(href='http://localhost:4000/resetPassword') Forgot password?
   br
   button#loginSubmit(type='submit') Submit
-  #loginSocial
-    p Log in with
-    a.loginSocialItem.fb-bg(href='#')
-      i.fa.fa-facebook
-    a.loginSocialItem.google-bg(href='#')
-      i.fa.fa-google
+  div#loginResponse
 form#regForm
   p#loginText Sign up
   br

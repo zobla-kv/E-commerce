@@ -68,7 +68,13 @@ export function handleResponse(message) {
     if (document.location.href.includes("profile") || document.location.href.includes("dashboard") || document.location.href.includes("cart"))
       return (document.location.href = "http://localhost:4000");
     else return document.location.reload();
+  } else {
+    loginResponse.innerHTML = message.message;
+    setTimeout(() => {
+      loginResponse.innerHTML = ""
+    }, 2500);
   }
+
   if(message === 'User created' || message === 'Email not verified') document.location.href = "http://localhost:4000/verify"
   if(message === 'Username taken') signValErr["repeatPasswordError"].innerHTML = message
 }

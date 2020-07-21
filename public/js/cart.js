@@ -1,7 +1,17 @@
-import * as page from "../exports.js";
+import {
+  addSearchFunctionality as search,
+  addPageSwitchFunctionality as pageSwitch,
+  addLogOutButtonFunctionality as logout,
+  addCartFunctionality as cart,
+} from "../exports.js";
 
 const navbar = document.getElementById("navbar");
 navbar.style.display = "flex";
+
+search();
+pageSwitch();
+logout();
+cart();
 
 const table = document.getElementById("itemsContainer");
 const totalPrice = document.getElementById("total");
@@ -17,16 +27,6 @@ if (table.rows.length > 2) {
 }
 
 placeOrder.style.marginTop = placeOrderHeight + "px";
-
-page.addSearchFunctionality();
-page.addPageSwitchFunctionality();
-page.addLoginButtonFunctionality();
-page.addLoginSubmitFunctionality();
-page.addRegButtonFunctionality();
-page.addRegSubmitFunctionality();
-page.addLogOutButtonFunctionality();
-page.addCartFunctionality();
-page.removeCover();
 
 // prettier-ignore
 for (let i = 0; i < removeBtns.length; i++)

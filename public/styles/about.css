@@ -2,6 +2,10 @@ body {
   height: 700px;
 }
 
+#pageCover {
+  height: 700px;
+}
+
 #content {
   position: absolute;
   border-top: 2px solid red;

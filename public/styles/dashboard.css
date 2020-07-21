@@ -7,6 +7,24 @@ body {
   --page-font: "Courier New", Courier, monospace;
 }
 
+#addProduct {
+  min-width: 600px;
+  border: 1px solid red;
+  width: 90%;
+  height: 5vh;
+  position: absolute;
+  top: 180px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  background: rgba(255, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 #formContainer {
   width: 50%;
 }

@@ -4,7 +4,7 @@ const profileContoller = require("../controllers/profileController");
 // prettier-ignore
 
 router.get("/", (req, res)=> {
-    res.status(404);
+    res.sendStatus(404);
 })
 
 router.get("/:jwt", profileContoller.verifyEmail);

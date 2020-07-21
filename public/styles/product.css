@@ -2,6 +2,10 @@ body {
   height: 600px;
 }
 
+#pageCover {
+  height: 600px;
+}
+
 #content {
   height: 60vh;
   top: 150px;
@@ -129,6 +133,7 @@ body {
   margin: auto;
   margin-top: 20px;
   text-align: center;
+  border: 1px solid white;
 }
 
 .text {
@@ -193,8 +198,21 @@ body {
     margin-bottom: 0;
   }
 
+  #quantity {
+    margin-top: -2px;
+  }
+
+  #quantityContainer {
+    height: 30px;
+  }
+
   #quantityText {
     margin-left: -47px;
+    top: 0px;
+  }
+
+  #response {
+    margin-top: -10px;
   }
 }
 
@@ -238,12 +256,12 @@ body {
     margin-left: 5px;
   }
 
-  #quantity {
-    margin-top: -2px;
-  }
-
   #add {
     margin-top: 10px;
+  }
+
+  #response {
+    margin-top: 20px;
   }
 }
 

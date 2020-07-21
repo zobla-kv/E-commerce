@@ -11,6 +11,10 @@ body {
   justify-content: space-around;
 }
 
+#pageCover {
+  height: 900px;
+}
+
 #filtersContainer {
   position: sticky;
   top: 100px;
@@ -105,34 +109,21 @@ body {
   left: 0;
   height: 15px;
   width: 15px;
-  background-color: #eee;
   border-radius: 5px;
 }
 
-.brandItem input:checked ~ .checkmark {
-  background-color: rgb(12, 12, 12);
-}
-
-.checkmark:after {
-  content: "";
+.marks {
   position: absolute;
-  display: none;
-}
-
-.brandItem input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.brandItem .checkmark:after {
-  left: 7px;
-  top: -2px;
-  width: 5px;
-  height: 10px;
+  left: 10px;
+  top: 2px;
+  width: 7px;
+  height: 15px;
   border: solid red;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+  display: none;
 }
 
 #shopItemsContainer {
@@ -210,12 +201,24 @@ a {
   }
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 450px) {
+  .product {
+    margin-left: 10px;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
   #filtersContainer {
     display: none;
   }
 
   #shopItemsContainer {
     width: 100%;
+  }
+
+  .product {
+    margin-left: 20px;
+    width: 85%;
   }
 }

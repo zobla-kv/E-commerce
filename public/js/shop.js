@@ -1,15 +1,5 @@
 import * as page from "./exports.js";
 
-page.addSearchFunctionality();
-page.addPageSwitchFunctionality();
-page.addLoginButtonFunctionality();
-page.addLoginSubmitFunctionality();
-page.addRegButtonFunctionality();
-page.addRegSubmitFunctionality();
-page.addLogOutButtonFunctionality();
-page.addCartFunctionality();
-page.removeCover();
-
 const navbar = document.getElementById("navbar");
 navbar.style.display = "flex";
 
@@ -26,6 +16,15 @@ const products = document.getElementsByClassName("product");
 const shopItemsContainer = document.getElementById("shopItemsContainer");
 const latestFilter = document.getElementById("latestFilter");
 const priceFilter = document.getElementById("priceFilter");
+const checkmarks = document.getElementsByClassName("checkmark");
+const marks = document.getElementsByClassName("marks");
+
+marks[6].style.display = "block";
+
+for (let i = 0; i < checkmarks.length; i++)
+  checkmarks[i].style.backgroundColor = "white";
+
+checkmarks[6].style.backgroundColor = "black";
 
 if (sessionStorage.getItem("pageChanger") === "navbar")
   sessionStorage.setItem("searchTerm", "all");
@@ -87,8 +86,6 @@ const productNames = items.map((e) => e.children[1].innerHTML.split("-")[0].toLo
 const sortedProductNames = [];
 
 // prettier-ignore
-
-// prettier-ignore
 for (let i = 0; i < brandFilters.length; i++)
   brandFilters[i].addEventListener("change", function () {
     if (this.checked) applyBrandFilter(selectedBrandFilters, brandFilterKeywords, i);
@@ -97,6 +94,8 @@ for (let i = 0; i < brandFilters.length; i++)
 
 function applyBrandFilter(selectedBrandFilters, brandFilterKeywords, i) {
   selectedBrandFilters.push(brandFilterKeywords[i]);
+  marks[i].style.display = "block";
+  checkmarks[i].style.backgroundColor = "black";
   displaySelectedBrands();
 }
 
@@ -104,6 +103,8 @@ function applyBrandFilter(selectedBrandFilters, brandFilterKeywords, i) {
 function removeBrandFilter(selectedBrandFilters, brandFilterKeywords,i){;
     const index = selectedBrandFilters.findIndex((e) => e === brandFilterKeywords[i]);
     selectedBrandFilters.splice(index, 1);
+    marks[i].style.display = "none";
+    checkmarks[i].style.backgroundColor = 'white';
     displaySelectedBrands()
     if(selectedBrandFilters.length === 0) displayAll(selectedGenderFilters, 'gender')
 }
@@ -156,6 +157,8 @@ genderFilters[i].addEventListener('change', function(){
     selectedGenderFilters.push(genderFilterKeywords[i]);
     sessionStorage.setItem('searchTerm', 'all')
     searchInput.value = ''
+    marks[i+4].style.display = 'block';
+    checkmarks[i+4].style.backgroundColor = 'black';
     items.forEach(e => {
       const gender = e.children[1].innerHTML.substr(e.children[1].innerHTML.length - 1)
       const brand = e.children[1].innerHTML.split(" ")[0];
@@ -173,6 +176,8 @@ genderFilters[i].addEventListener('change', function(){
   else{
     const index = selectedGenderFilters.findIndex((e) => e === genderFilterKeywords[i]);
     selectedGenderFilters.splice(index, 1);
+    marks[i+4].style.display = 'none';
+    checkmarks[i+4].style.backgroundColor = 'white';
     items.forEach(e => {
       const gender = e.children[1].innerHTML.substr(e.children[1].innerHTML.length - 1)
       if(e.style.display === 'block' && selectedGenderFilters.includes(gender)) return
@@ -187,6 +192,10 @@ genderFilters[i].addEventListener('change', function(){
 // prettier-ignore
 priceFilter.addEventListener("change", function () {
   if (this.checked) {
+    marks[6].style.display = 'none';
+    checkmarks[6].style.backgroundColor = 'white';
+    marks[7].style.display = 'block';
+    checkmarks[7].style.backgroundColor = 'black';
     items.sort(function (a, b) {
       return (Number(b.children[2].innerHTML.split(" ")[0]) - Number(a.children[2].innerHTML.split(" ")[0]));
     });
@@ -198,15 +207,35 @@ priceFilter.addEventListener("change", function () {
 });
 
 latestFilter.addEventListener("change", function () {
-  if (this.checked)
+  if (this.checked) {
+    marks[6].style.display = "block";
+    checkmarks[6].style.backgroundColor = "black";
+    marks[7].style.display = "none";
+    checkmarks[7].style.backgroundColor = "white";
     for (let i = 0; i < regularSortedItems.length; i++)
       shopItemsContainer.appendChild(regularSortedItems[i]);
+  }
 });
 
 clearSearch.addEventListener("click", () => {
   clearFilters();
   for (let i = 0; i < items.length; i++) {
-    shopItemsContainer.appendChild(items[i]);
+    shopItemsContainer.appendChild(regularSortedItems[i]);
     items[i].style.display = "block";
+    if (marks[i]) marks[i].style.display = "none";
+    if (checkmarks[i]) checkmarks[i].style.backgroundColor = "white";
+
+    marks[6].style.display = "block";
+    checkmarks[6].style.backgroundColor = "black";
   }
 });
+
+page.addSearchFunctionality();
+page.addPageSwitchFunctionality();
+page.addLoginButtonFunctionality();
+page.addLoginSubmitFunctionality();
+page.addRegButtonFunctionality();
+page.addRegSubmitFunctionality();
+page.addLogOutButtonFunctionality();
+page.addCartFunctionality();
+page.removeCover();

@@ -65,5 +65,5 @@ if (addToCart)
 function clearResponseMessage() {
   setTimeout(() => {
     response.innerHTML = "";
-  }, 3000);
+  }, 2000);
 }
