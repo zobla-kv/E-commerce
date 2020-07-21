@@ -23,6 +23,9 @@ const userSchema = new mongoose.Schema({
   activated: {
     type: Boolean,
   },
+  facebookID: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("user", userSchema);

@@ -4,10 +4,10 @@ const isAuth = require("../middleware/isAuth");
 
 router.get("/", isAuth, cart.get);
 
-router.post("/", cart.createOrder);
+router.post("/", isAuth, cart.createOrder);
 
-router.put("/", cart.add);
+router.put("/", isAuth, cart.add);
 
-router.delete("/", cart.remove);
+router.delete("/", isAuth, cart.remove);
 
 module.exports = router;

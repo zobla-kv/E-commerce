@@ -62,18 +62,26 @@ orders.addEventListener("click", () => {
 
 const tl = animation;
 
-//prettier-ignore
 function animateDrop() {
-  tl.fromTo(addProduct, 0.5, {}, { height: '340px'})
-    .fromTo(orders, 0.5, {marginTop: '230px'}, { marginTop: '540px'},"-=0.5")
+  tl.fromTo(addProduct, 0.5, {}, { height: "340px" }).fromTo(
+    orders,
+    0.5,
+    { marginTop: "230px" },
+    { marginTop: "540px" },
+    "-=0.5"
+  );
   dropdownActive = true;
 }
 
-//prettier-ignore
 function animateLift(e) {
-  if(e.tagName !== 'INPUT' && e.tagName !== 'BUTTON'){
-    tl.fromTo(addProduct, 0.5, {}, {height: '5vh'})
-      .fromTo(orders, 0.5, {marginTop: '560px'}, { marginTop: '230px'}, "-=0.5")
+  if (e.tagName !== "INPUT" && e.tagName !== "BUTTON") {
+    tl.fromTo(addProduct, 0.5, {}, { height: "5vh" }).fromTo(
+      orders,
+      0.5,
+      { marginTop: "560px" },
+      { marginTop: "230px" },
+      "-=0.5"
+    );
     dropdownActive = false;
   }
 }
@@ -86,15 +94,13 @@ function animateOrdersDrop() {
   ordersDropdownActive = true;
 }
 
-//prettier-ignore
 function animateOrdersLift(e) {
-  if(e.tagName !== 'BUTTON'){
-    tl.fromTo(orders, 0.5, {}, {height: '5vh'})
+  if (e.tagName !== "BUTTON") {
+    tl.fromTo(orders, 0.5, {}, { height: "5vh" });
     ordersDropdownActive = false;
   }
 }
 
-// prettier - ignore;
 for (let i = 0; i < removeBtns.length; i++)
   removeBtns[i].addEventListener("click", function () {
     const order = this.parentNode.parentNode.children[0].innerHTML;

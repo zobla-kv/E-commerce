@@ -2,7 +2,6 @@ const User = require("./schemas/user");
 const bcrypt = require("bcrypt");
 const sendEmail = require("../middleware/sendEmail");
 
-//prettier-ignore
 async function createUser(data) {
   const { data: { email, username, password }} = data;
   try{

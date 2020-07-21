@@ -1,6 +1,5 @@
 const product = require("../models/product");
 
-//prettier-ignore
 function add(req, res) {
   product.add(req.body, req.files)
   .then((message) => res.json({ message }))

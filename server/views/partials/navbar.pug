@@ -13,14 +13,14 @@ section#navbar
       button#searchButton(type='submit')
         i.fa.fa-search
   .navbarItemsContainer.profile
-    if !user.loggedIn 
+    if !user
         button#loginButton Login
         button#regButton Sign up
     else 
         div#cart
           img(src="/assets/img/cart.png")
         div#loggedInProfile
-          p #{user.name}
+          p #{user.username}
         div#profileDropdown
           a(href="/profile/" + user.id)
             div.item#profile profile
@@ -41,6 +41,12 @@ form#loginForm
   br
   button#loginSubmit(type='submit') Submit
   div#loginResponse
+  //- #loginSocial
+  //-   p Log in with
+  //-   a#fbLogin.loginSocialItem.fb-bg(href='#')
+  //-     i.fa.fa-facebook
+  //-   a#googleLogin.loginSocialItem.google-bg(href='#')
+  //-     i.fa.fa-google
 form#regForm
   p#loginText Sign up
   br

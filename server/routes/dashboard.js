@@ -8,8 +8,8 @@ router.use(upload());
 
 router.get("/", isAuth, ordersController.getAll);
 
-router.post("/", productController.add);
+router.post("/", isAuth, productController.add);
 
-router.delete("/", ordersController.remove);
+router.delete("/", isAuth, ordersController.remove);
 
 module.exports = router;

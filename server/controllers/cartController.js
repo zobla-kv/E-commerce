@@ -8,14 +8,11 @@ async function add(req, res) {
 async function get(req, res) {
   const cartItems = await cart.get(req.session.passport.user);
   const totalPrice = getTotalPrice(cartItems);
-  res.render("cart", { cartItems, totalPrice });
+  res.render("cart", { user: req.user, cartItems, totalPrice });
 }
 
 async function remove(req, res) {
-  const newPrice = await cart.remove(
-    req.body.productName,
-    req.session.passport.user
-  );
+  const newPrice = await cart.remove(req.body.productName,req.session.passport.user);
   res.status(200).json({ newPrice });
 }
 

@@ -9,7 +9,7 @@ section#content
         div#name #[p.tag Name:] #[p#value #{item.name}]
         div#gender #[p.tag Gender:] #[p#genderValue #{item.gender}]
         div#price #[p.tag Price:] #{item.price} $
-        if !user.loggedIn
+        if !user
             div#addToCartContainer.text Log in and add to cart !
         else
             div#addToCartContainer

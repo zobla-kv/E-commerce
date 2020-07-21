@@ -97,22 +97,30 @@ window.addEventListener("scroll", () => {
   }
 });
 
-/// timelinemax //
-
 const tl = page.tl;
 
-// prettier-ignore
 if (!sessionStorage.getItem("firstVisit")) {
   setTimeout(() => {
     navbar.style.display = "flex";
     welcomeContainer.style.display = "flex";
 
-    tl.fromTo(welcomeContainer,1, { width: "0" },{ width: "64%", ease: Power2.easeInOut })
+    tl.fromTo(
+      welcomeContainer,
+      1,
+      { width: "0" },
+      { width: "64%", ease: Power2.easeInOut }
+    )
       .fromTo(welcomeCentral, 1, { opacity: "0" }, { opacity: "1" })
       .fromTo(welcomeLeft, 1, { opacity: "0" }, { opacity: "1" }, "-=0.4")
-      .fromTo(welcomeRight, 1, { opacity: "0" }, { opacity: "1" },"-=0.5")
+      .fromTo(welcomeRight, 1, { opacity: "0" }, { opacity: "1" }, "-=0.5")
       .fromTo(navbar, 1, { opacity: "0" }, { opacity: "1" }, "-=0.5")
-      .fromTo(navbarItems, 1, { marginLeft: "-2%" }, { marginLeft: "0%" }, "-=1.2")
+      .fromTo(
+        navbarItems,
+        1,
+        { marginLeft: "-2%" },
+        { marginLeft: "0%" },
+        "-=1.2"
+      )
       .fromTo(slideShowPrice, 1, { scale: "0" }, { scale: "1" });
   }, 1000);
   sessionStorage.setItem("firstVisit", "true");

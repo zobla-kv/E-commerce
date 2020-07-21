@@ -3,7 +3,7 @@ const User = require("../models/schemas/user");
 module.exports = async function (req, res, next) {
   const reqUrl = req.originalUrl;
 
-  if (!req.session.passport || !req.session.passport.user)
+  if (!req.session.passport || !req.session.passport.user) 
     return res.sendStatus(403);
 
   if (reqUrl.includes("profile")) {

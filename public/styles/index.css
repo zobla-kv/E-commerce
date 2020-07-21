@@ -420,8 +420,7 @@ button {
   display: none;
 }
 
-#regForm {
-  top: 100px;
+#regForm{
   height: 60vh;
 }
 

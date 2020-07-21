@@ -13,7 +13,6 @@ async function changePassword(req) {
   await User.updateOne(req.user, { password: hashedPassword });
 }
 
-//prettier-ignore
 async function verifyEmail(token) {
   return jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) return "invalid token";
@@ -34,7 +33,6 @@ async function emailPasswordReset(email) {
   } else return "Email not found";
 }
 
-//prettier-ignore
 async function verifyToken(token) {
   return jwt.verify(token,process.env.JWT_SECRET,(err, decoded) => {
       if (err) return "invalid token";

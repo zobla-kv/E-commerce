@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const profileContoller = require("../controllers/profileController");
 
-// prettier-ignore
 router.get("/", (req, res)=> {
     res.render('resetPassword')
 });

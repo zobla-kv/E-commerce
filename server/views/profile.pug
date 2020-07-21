@@ -1,32 +1,7 @@
 doctype html
 include partials/head
 link(rel='stylesheet' href='../styles/profile.css')
-section#navbar
-  .navbarItemsContainer.pagesContainer
-    .pages
-      p Home
-    .pages
-      p Shop
-    .pages
-      p About
-  .navbarItemsContainer.searchContainer
-    form#search
-      // prettier-ignore
-      input#searchInput.searchTerm(type='text' placeholder='What are you looking for?')
-      button#searchButton(type='submit')
-        i.fa.fa-search
-  .navbarItemsContainer.profile
-    div#cart
-      img(src="/assets/img/cart.png")
-    div#loggedInProfile
-      p #{user.name}
-    div#profileDropdown
-      a(href="/profile/" + user._id)
-        div.item#profile profile
-        if user.admin
-          a(href="/dashboard")
-             div.item#dashboard dashboard
-        div.item#logout log out
+include partials/navbar
 div#updateProfile
   p update profile
   div#dropdown

@@ -1,11 +1,7 @@
 const router = require("express").Router();
-const bodyParser = require("body-parser");
 const globalController = require("../controllers/globalController");
-const setUser = require("../middleware/setUser");
 
-router.use(bodyParser());
-
-router.get("/", setUser, (req, res) => {
+router.get("/", (req, res) => {
   res.render("index", { user: req.user });
 });
 

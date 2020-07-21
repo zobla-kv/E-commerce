@@ -1,8 +1,7 @@
 const profile = require("../models/profile");
 
 async function getUser(req, res) {
-  const user = await profile.getUser(req.user);
-  res.render("profile", user);
+  res.render("profile", { user: req.user });
 }
 
 function redirect(req, res) {
@@ -15,7 +14,6 @@ async function changePassword(req, res) {
   res.status(200).json({ message: "password updated" });
 }
 
-//prettier-ignore
 async function verifyEmail(req, res) {
   let jwtVerificationMessage = await profile.verifyEmail(req.params.jwt)
   res.render("activation", { jwtVerificationMessage });

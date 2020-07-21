@@ -6,6 +6,6 @@ router.get("/", profileController.redirect);
 
 router.get("/:id", isAuth, profileController.getUser);
 
-router.put("/", profileController.changePassword);
+router.put("/", isAuth, profileController.changePassword);
 
 module.exports = router;

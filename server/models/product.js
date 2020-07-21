@@ -1,7 +1,6 @@
 const Product = require("./schemas/product");
 const fs = require("fs");
 
-//prettier-ignore
 function add(data, img){
     const { name, price, gender } = data;
     const { name: imgName, data: imgData } = img.img;

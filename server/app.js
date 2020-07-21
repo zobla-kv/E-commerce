@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const helmet = require("helmet");
 require("dotenv").config();
 
 // modules
@@ -24,7 +26,9 @@ const activationRouter = require("./routes/activation");
 const resetPasswordRouter = require("./routes/resetPassword");
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, "../public/")));
+app.use(helmet());
+app.use(bodyParser());
+app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.static(path.join(__dirname, "../public/js")));
 app.use(express.static(path.join(__dirname, "../public/shop/uploads")));
 app.use(

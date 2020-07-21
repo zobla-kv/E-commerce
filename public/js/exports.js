@@ -62,20 +62,20 @@ export function performHttpRequest(type, data) {
     .then((data) => handleResponse(data.message));
 }
 
-// prettier-ignore
 export function handleResponse(message) {
   if (message === "success") {
     if (document.location.href.includes("profile") || document.location.href.includes("dashboard") || document.location.href.includes("cart"))
       return (document.location.href = "http://localhost:4000");
     else return document.location.reload();
   } else {
+    if(message.message)
     loginResponse.innerHTML = message.message;
     setTimeout(() => {
       loginResponse.innerHTML = ""
     }, 2500);
   }
 
-  if(message === 'User created' || message === 'Email not verified') document.location.href = "http://localhost:4000/verify"
+  if(message === 'User created') document.location.href = "http://localhost:4000/verify"
   if(message === 'Username taken') signValErr["repeatPasswordError"].innerHTML = message
 }
 
@@ -97,7 +97,8 @@ export function addRegSubmitFunctionality() {
   if (regSubmit)
     regSubmit.addEventListener("click", () => {
       event.preventDefault();
-      // prettier-ignore
+
+    
       const validation = validateSignupForm(regEmail.value,regUsername.value,regPassword.value,regPasswordRepeat.value);
       switch (validation) {
         case "email":
@@ -166,7 +167,7 @@ export function addBlur() {
   document.body.appendChild(cover);
   let startTime = 0;
   for (let i = 0; i < sections.length; i++) {
-    // prettier-ignore
+  
     tl.fromTo( sections[i],0.5,{ filter: "blur(0px)" },{ filter: "blur(15px)" }, `-=${startTime}`);
     if (i == 1) startTime = 0.5;
     else startTime += 0.5;
@@ -186,7 +187,6 @@ export function removeBlur(element) {
   tl.fromTo(element, 0.3, { opacity: "1" }, { opacity: "0" });
   let startTime = 0;
   for (let i = 0; i < sections.length; i++) {
-    // prettier-ignore
     tl.fromTo( sections[i],0.3,{ filter: "blur(15px)" },{ filter: "blur(0px)" }, `-=${startTime}`);
     if (i == 1) startTime = 0.3;
     else startTime += 0.3;
@@ -196,7 +196,6 @@ export function removeBlur(element) {
   }, 300);
 }
 
-// prettier-ignore
 export function validateSignupForm(email, username, password, repeatedPassword) {
   if (email.match(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/) === null)
     return "email";

@@ -28,7 +28,6 @@ async function remove(product, userId) {
   return getNewPrice(user.cart);
 }
 
-// prettier-ignore
 async function createOrder(userId) {
   const user = await User.findById(userId);
   const orderObject = generateOrder(user.username, user.cart);

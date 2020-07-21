@@ -10,6 +10,7 @@ module.exports = function (passport) {
         await bcrypt.compare(password, user.password, (err, isMatched) => {
           if (!isMatched)
             return done(null, false, { message: "Password incorrect" });
+          else if(user.activated === false) return done(null, false, { message: "Email not verified" });
           else return done(null, user);
         });
       });
