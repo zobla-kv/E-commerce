@@ -16,7 +16,7 @@ cart();
 const table = document.getElementById("itemsContainer");
 const totalPrice = document.getElementById("total");
 const placeOrder = document.getElementById("placeAndResponse");
-const numOfItems = document.getElementById('numOfItems');
+const numOfItems = document.getElementById("numOfItems");
 const remove = document.getElementsByClassName("remove");
 const removeBtns = Array.from(remove);
 
@@ -43,8 +43,10 @@ for (let i = 0; i < removeBtns.length; i++)
       .then((data)=> {
         const row = this.parentNode.parentNode;
         row.parentNode.removeChild(row);
+        if(numOfItems.innerHTML > 0)
+        numOfItems.innerHTML--;
+        sessionStorage.setItem('numOfItems', numOfItems.innerHTML)
         totalPrice.innerHTML = `= ${data.newPrice} $`;
-
         if(table.rows.length === 2) orderButton.style.display = 'none'
         else {
           placeOrderHeight -= 50;
@@ -76,7 +78,6 @@ orderButton.addEventListener("click", () => {
       }, 3000);
     });
 });
-
 
 function deleteRows() {
   return new Promise((resolve) => {

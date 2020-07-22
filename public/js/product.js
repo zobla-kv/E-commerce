@@ -6,7 +6,7 @@ navbar.style.display = "flex";
 let name = document.getElementById("value").innerText;
 const gender = document.getElementById("genderValue");
 const price = document.getElementById("price").innerHTML;
-const numOfItems = document.getElementById('numOfItems');
+const numOfItems = document.getElementById("numOfItems");
 
 const priceValue = price.split(" ")[2];
 
@@ -58,12 +58,11 @@ if (addToCart)
     })
       .then((res) => res.json())
       .then((data) => {
-        if(data.message === 'added to cart')
-        numOfItems.innerHTML++;
-        response.innerHTML = 'added to cart';
+        if (data.message === "added to cart") numOfItems.innerHTML++;
+        response.innerHTML = "added to cart";
+        sessionStorage.setItem("numOfItems", numOfItems.innerHTML);
         clearResponseMessage();
       });
-
   });
 
 function clearResponseMessage() {

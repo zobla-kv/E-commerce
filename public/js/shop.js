@@ -18,8 +18,14 @@ const latestFilter = document.getElementById("latestFilter");
 const priceFilter = document.getElementById("priceFilter");
 const checkmarks = document.getElementsByClassName("checkmark");
 const marks = document.getElementsByClassName("marks");
+const numOfItems = document.getElementById("numOfItems");
 
 marks[6].style.display = "block";
+
+if (sessionStorage.getItem("numOfItems")) {
+  numOfItems.innerHTML = sessionStorage.getItem("numOfItems");
+  sessionStorage.removeItem("numOfItems");
+}
 
 for (let i = 0; i < checkmarks.length; i++)
   checkmarks[i].style.backgroundColor = "white";
