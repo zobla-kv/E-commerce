@@ -17,6 +17,7 @@ section#navbar
         button#loginButton Login
         button#regButton Sign up
     else 
+        div#numOfItems #{user.cart.length}
         div#cart
           img(src="/assets/img/cart.png")
         div#loggedInProfile

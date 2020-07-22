@@ -16,6 +16,7 @@ cart();
 const table = document.getElementById("itemsContainer");
 const totalPrice = document.getElementById("total");
 const placeOrder = document.getElementById("placeAndResponse");
+const numOfItems = document.getElementById('numOfItems');
 const remove = document.getElementsByClassName("remove");
 const removeBtns = Array.from(remove);
 
@@ -76,9 +77,13 @@ orderButton.addEventListener("click", () => {
     });
 });
 
+
 function deleteRows() {
   return new Promise((resolve) => {
-    for (let i = 0; i < removeBtns.length; i++) removeBtns[i].click();
+    for (let i = 0; i < removeBtns.length; i++) {
+      removeBtns[i].click();
+      numOfItems.innerHTML--;
+    }
     setTimeout(() => {
       resolve();
     }, 300);

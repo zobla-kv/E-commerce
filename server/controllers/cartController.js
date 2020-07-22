@@ -1,8 +1,8 @@
 const cart = require("../models/cart");
 
 async function add(req, res) {
-  await cart.add(req.body, req.session.passport.user);
-  res.status(201).json({ message: "added to cart" });
+  const message = await cart.add(req.body, req.session.passport.user);
+  res.status(201).json({ message });
 }
 
 async function get(req, res) {

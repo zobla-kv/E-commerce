@@ -9,8 +9,10 @@ async function add(product, userId) {
       { _id: userId, "cart.name": product.name },
       { $inc: { "cart.$.quantity": product.quantity } }
     );
+    return 'product in cart';
   } else {
     await User.findOneAndUpdate({ _id: userId }, { $push: { cart: product } });
+    return 'added to cart'
   }
 }
 
